@@ -46,3 +46,8 @@ rf_model = RandomForestClassifier(random_state=42)
 rf_model.fit(X_train, y_train)
 
 print(rf_model.score(X_test, y_test))
+
+from sklearn.metrics import classification_report
+
+y_pred = rf_model.predict(X_test)
+print(classification_report(y_test, y_pred))
