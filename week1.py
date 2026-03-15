@@ -63,3 +63,19 @@ plt.title('Feature Importance')
 plt.tight_layout()
 plt.savefig('feature_importance.png')
 print("Chart saved")
+
+from sklearn.model_selection import cross_val_score
+import numpy as np
+
+scores = cross_val_score(rf_model, X, y, cv=5)
+print(f"Cross-validation scores: {scores}")
+print(f"Average: {scores.mean():.3f}")
+
+from xgboost import XGBClassifier
+
+xgb_model = XGBClassifier(random_state=42, eval_metric='logloss')
+xgb_model.fit(X_train, y_train)
+print(xgb_model.score(X_test, y_test))
+
+xgb_scores = cross_val_score(xgb_model,X, y, cv=5)
+print(f"XGBoost CV Average: {xgb_scores.mean():.3f}")
