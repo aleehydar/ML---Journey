@@ -9,14 +9,16 @@ with no local downloads required.
 - Explored dataset: 506 houses, 14 columns
 - No missing values found — went straight to model training
 - Used all 13 features to predict median house value (medv)
-- Trained Random Forest Regressor and evaluated with MAE
+- Trained and compared Random Forest Regressor and XGBoost
+- Evaluated both models using Mean Absolute Error (MAE)
 
 ## Results
-| Metric | Score |
-|--------|-------|
-| Mean Absolute Error | $2,040 |
+| Model | MAE |
+|-------|-----|
+| Random Forest | $2,040 |
+| XGBoost | $1,890 |
 
-Meaning: model predictions are off by $2,040 on average.
+XGBoost predicted $150 closer to real prices on average.
 
 ## Tools used
-Python, pandas, scikit-learn
+Python, pandas, scikit-learn, XGBoost
