@@ -24,7 +24,7 @@ print(df['Sex'].head(10))
 
 from sklearn.model_selection import train_test_split
 
-features = ['Pclass', 'Sex', 'Age', 'Fare']
+features = ['Pclass', 'Sex', 'Age', 'Fare', 'SibSp', 'Parch']
 X = df[features]
 y = df['Survived']
 
@@ -51,3 +51,15 @@ from sklearn.metrics import classification_report
 
 y_pred = rf_model.predict(X_test)
 print(classification_report(y_test, y_pred))
+
+import pandas as pd
+importance = pd.Series(rf_model.feature_importances_, index=features)
+print(importance.sort_values(ascending=False))
+
+import matplotlib.pyplot as plt
+
+importance.sort_values().plot(kind='barh')
+plt.title('Feature Importance')
+plt.tight_layout()
+plt.savefig('feature_importance.png')
+print("Chart saved")
