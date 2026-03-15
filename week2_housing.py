@@ -19,3 +19,12 @@ model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 print(f"MAE: {mean_absolute_error(y_test, y_pred):.2f}")
+
+from xgboost import XGBRegressor
+
+xgb_model = XGBRegressor(random_state=42)
+xgb_model.fit(X_train, y_train)
+print(xgb_model.score(X_test, y_test))
+
+y_pred_xgb = xgb_model.predict(X_test)
+print(f"XGBoost MAE: {mean_absolute_error(y_test, y_pred_xgb):.2f}")
