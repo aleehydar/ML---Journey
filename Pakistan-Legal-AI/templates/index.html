@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakistan Legal Intelligence Dashboard</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-base: #030712;
+            --panel-bg: rgba(17, 24, 39, 0.65);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --primary-glow: #3b82f6;
+            --secondary-glow: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --bot-bubble: rgba(30, 41, 59, 0.7);
+            --user-bubble: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(29, 78, 216, 0.9));
+            --trace-bg: #0f172a;
+            --trace-text: #64748b;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Aurora Background */
+        .ambient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: float 20s infinite alternate cubic-bezier(0.5, 0, 0.5, 1);
+        }
+
+        .ambient-1 {
+            background: var(--primary-glow);
+            width: 50vw;
+            height: 50vw;
+            top: -10%;
+            left: -10%;
+        }
+
+        .ambient-2 {
+            background: var(--secondary-glow);
+            width: 40vw;
+            height: 40vw;
+            bottom: -10%;
+            right: -10%;
+            animation-duration: 25s;
+            animation-direction: alternate-reverse;
+        }
+
+        /* Abstract Grid Overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(var(--panel-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--panel-border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.2;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Main Dashboard Container */
+        .dashboard-wrapper {
+            width: 96%;
+            height: 94vh;
+            display: flex;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--panel-border);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Left Panel - Chat */
+        .chat-panel {
+            flex: 6;
+            position: relative;
+        }
+
+        /* Right Panel - Document Viewer */
+        .doc-panel {
+            flex: 4;
+            display: flex;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        /* Headers */
+        .panel-header {
+            padding: 1.25rem 1.75rem;
+            border-bottom: 1px solid var(--panel-border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(3, 7, 18, 0.4);
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--secondary-glow);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .header-titles h1 {
+            margin: 0;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .header-titles p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--secondary-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--secondary-glow);
+            animation: pulseFade 2s infinite;
+        }
+
+        /* Chat Area */
+        .chat-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            scroll-behavior: smooth;
+        }
+
+        .chat-scroll::-webkit-scrollbar,
+        .doc-content::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .chat-scroll::-webkit-scrollbar-track,
+        .doc-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-scroll::-webkit-scrollbar-thumb,
+        .doc-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .message-row {
+            display: flex;
+            gap: 1rem;
+            max-width: 90%;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .message-row.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-row.bot {
+            align-self: flex-start;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .bot .avatar {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .user .avatar {
+            background: var(--user-bubble);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .message-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* Reasoning Trace Console */
+        .trace-console {
+            background: var(--trace-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--trace-text);
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            max-width: 100%;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .trace-console.collapsed {
+            display: none;
+        }
+
+        .trace-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        .trace-line i {
+            margin-top: 0.15rem;
+            font-size: 0.7rem;
+        }
+
+        .trace-line.done {
+            color: var(--secondary-glow);
+        }
+
+        .trace-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary-glow);
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        /* Message Bubble */
+        .message-bubble {
+            background: var(--bot-bubble);
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            border-top-left-radius: 4px;
+            padding: 1.15rem 1.4rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        .user .message-bubble {
+            background: var(--user-bubble);
+            border: none;
+            border-radius: 16px;
+            border-top-right-radius: 4px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Source Tags */
+        .sources-wrapper {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 0.75rem;
+        }
+
+        .source-tag {
+            font-size: 0.7rem;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .source-tag:hover {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.4);
+            color: var(--secondary-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);
+        }
+
+        /* Input Area */
+        .input-area {
+            padding: 1.25rem 1.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            border-top: 1px solid var(--panel-border);
+        }
+
+        .input-form {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(3, 7, 18, 0.5);
+            color: white;
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            padding: 1.2rem 4.5rem 1.2rem 1.5rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .input-field:focus {
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1), inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .input-field::placeholder {
+            color: #475569;
+        }
+
+        .send-btn {
+            position: absolute;
+            right: 0.6rem;
+            background: var(--text-main);
+            color: var(--bg-base);
+            border: none;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Document Panel Styling */
+        .doc-empty {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            gap: 1rem;
+        }
+
+        .doc-empty i {
+            font-size: 3rem;
+            opacity: 0.2;
+        }
+
+        .doc-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: none;
+            font-family: 'Georgia', serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .doc-content h2 {
+            font-family: var(--font-display);
+            color: white;
+            margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 1rem;
+        }
+
+        .doc-content.active {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+
+        /* Typography overrides */
+        strong {
+            color: #f8fafc;
+            font-weight: 600;
+        }
+
+        /* Keyframes */
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(15%, 15%) scale(1.1);
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseFade {
+            0% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.4;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-wrapper {
+                flex-direction: column;
+                height: 100vh;
+                width: 100%;
+                border-radius: 0;
+            }
+
+            .doc-panel {
+                display: none;
+            }
+
+            /* Hide doc viewer on mobile */
+            .panel {
+                border-radius: 0;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-bg">
+        <div class="ambient-glow ambient-1"></div>
+        <div class="ambient-glow ambient-2"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <div class="dashboard-wrapper">
+
+        <!-- Left: Chat Panel -->
+        <div class="panel chat-panel">
+            <header class="panel-header">
+                <div class="brand-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="header-titles">
+                    <h1>Pakistan Legal Intelligence</h1>
+                    <p><span class="pulse-dot"></span> Secure Connection Active</p>
+                </div>
+            </header>
+
+            <main class="chat-scroll" id="chat-container">
+                <div class="message-row bot">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            Initializing legal intelligence dashboard. I have full conversational memory and access to
+                            Constitutional, Labor, and Tax laws. Awaiting query...
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="input-area">
+                <form class="input-form" id="chat-form">
+                    <input type="text" id="question-input" class="input-field" placeholder="Query legal framework..."
+                        autocomplete="off" required>
+                    <button type="submit" class="send-btn" id="send-btn" title="Synthesize"><i
+                            class="fa-solid fa-arrow-up"></i></button>
+                </form>
+            </footer>
+        </div>
+
+        <!-- Right: Document Viewer -->
+        <div class="panel doc-panel">
+            <header class="panel-header" style="background: rgba(3, 7, 18, 0.8);">
+                <div class="header-titles">
+                    <h1 style="font-size: 1rem; color: #94a3b8;"><i class="fa-regular fa-file-lines"
+                            style="margin-right: 8px;"></i> Document Explorer</h1>
+                </div>
+            </header>
+
+            <div class="doc-empty" id="doc-placeholder">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <p>Click on any <strong>Source Tag</strong> in the chat to seamlessly load the full legal text here for
+                    review.</p>
+            </div>
+
+            <div class="doc-content" id="doc-viewer">
+                <h2 id="doc-title">Document Title</h2>
+                <div id="doc-text">Document text will appear here.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // DOM Elements
+        const chatForm = document.getElementById('chat-form');
+        const questionInput = document.getElementById('question-input');
+        const chatContainer = document.getElementById('chat-container');
+        const sendBtn = document.getElementById('send-btn');
+
+        const docPlaceholder = document.getElementById('doc-placeholder');
+        const docViewer = document.getElementById('doc-viewer');
+        const docTitle = document.getElementById('doc-title');
+        const docText = document.getElementById('doc-text');
+
+        // State
+        let chatHistory = [];
+        let isWaiting = false;
+        let legalDocuments = {}; // Fetched on load
+
+        // Load document database for right panel
+        async function fetchDocuments() {
+            try {
+                const res = await fetch('/documents');
+                legalDocuments = await res.json();
+            } catch (err) {
+                console.error("Failed to load document metadata.");
+            }
+        }
+        fetchDocuments();
+
+        function showSource(sourceName) {
+            const content = legalDocuments[sourceName];
+            if (content) {
+                docPlaceholder.style.display = 'none';
+                docViewer.classList.remove('active');
+
+                // Force reflow for animation restart
+                void docViewer.offsetWidth;
+
+                docTitle.innerText = sourceName;
+                docText.innerText = content;
+                docViewer.classList.add('active');
+            }
+        }
+
+        // --- Utilities ---
+        function escapeHtml(text) {
+            const div = document.createElement('div'); div.innerText = text; return div.innerHTML;
+        }
+        function formatMarkdown(text) {
+            let f = escapeHtml(text);
+            f = f.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+            f = f.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            return f;
+        }
+        function scrollToBottom() { requestAnimationFrame(() => { chatContainer.scrollTop = chatContainer.scrollHeight; }); }
+
+        function addMessageRow(role) {
+            const row = document.createElement('div');
+            row.className = `message-row ${role}`;
+            chatContainer.appendChild(row);
+            return row;
+        }
+
+        function appendUserMessage(text) {
+            const row = addMessageRow('user');
+            row.innerHTML = `<div class="avatar"><i class="fa-solid fa-user"></i></div><div class="message-content"><div class="message-bubble">${escapeHtml(text)}</div></div>`;
+            scrollToBottom();
+        }
+
+        function createBotMessageStream() {
+            const row = addMessageRow('bot');
+            const uid = Date.now();
+
+            row.innerHTML = `
+                <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="message-content">
+                    
+                    <!-- Trace Badge (Hidden initially) -->
+                    <div class="trace-badge" id="trace-badge-${uid}" style="display:none;" onclick="document.getElementById('trace-console-${uid}').classList.toggle('collapsed')">
+                        <i class="fa-solid fa-microchip"></i> Reasoning Completed
+                    </div>
+
+                    <!-- Trace Console -->
+                    <div class="trace-console" id="trace-console-${uid}">
+                        <div class="trace-line"><i><i class="fa-solid fa-circle-notch fa-spin"></i></i> <span>Initializing pipeline...</span></div>
+                    </div>
+
+                    <!-- Answer Bubble (Hidden initially) -->
+                    <div class="message-bubble" id="bubble-${uid}" style="display:none;"></div>
+                    
+                    <!-- Sources (Hidden initially) -->
+                    <div class="sources-wrapper" id="sources-${uid}" style="display:none;"></div>
+                </div>
+            `;
+            scrollToBottom();
+            return uid;
+        }
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (isWaiting) return;
+
+            const text = questionInput.value.trim();
+            if (!text) return;
+
+            questionInput.value = '';
+            appendUserMessage(text);
+
+            const payloadHistory = chatHistory.slice(-6);
+            chatHistory.push({ role: 'user', content: text });
+
+            const uid = createBotMessageStream();
+            const traceConsole = document.getElementById(`trace-console-${uid}`);
+            const traceBadge = document.getElementById(`trace-badge-${uid}`);
+            const bubble = document.getElementById(`bubble-${uid}`);
+            const sourcesWrapper = document.getElementById(`sources-${uid}`);
+
+            isWaiting = true; sendBtn.disabled = true;
+            let fullBotText = "";
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: text, history: payloadHistory })
+                });
+
+                if (!response.ok) throw new Error('Network Error');
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let hasStartedTyping = false;
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split('\n');
+
+                    for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                            try {
+                                const dataStr = line.replace('data: ', '').trim();
+                                if (!dataStr) continue;
+                                const parsed = JSON.parse(dataStr);
+
+                                if (parsed.type === "trace") {
+                                    // Append to reasoning console
+                                    const tLine = document.createElement('div');
+                                    tLine.className = 'trace-line';
+                                    tLine.innerHTML = `<i><i class="fa-solid fa-check"></i></i> <span>${escapeHtml(parsed.data)}</span>`;
+                                    traceConsole.appendChild(tLine);
+                                    scrollToBottom();
+                                }
+                                else if (parsed.type === "sources") {
+                                    const sources = parsed.data;
+                                    if (sources && sources.length > 0) {
+                                        const tags = sources.map(s => `
+                                            <div class="source-tag" onclick="showSource('${escapeHtml(s).replace(/'/g, "\\'")}')">
+                                                <i class="fa-solid fa-file-invoice"></i> ${escapeHtml(s)}
+                                            </div>
+                                        `).join('');
+                                        sourcesWrapper.innerHTML = tags;
+                                        sourcesWrapper.style.display = 'flex';
+                                    }
+                                }
+                                else if (parsed.type === "token") {
+                                    if (!hasStartedTyping) {
+                                        hasStartedTyping = true;
+                                        // Collapse Trace, Show Badge, Show Bubble
+                                        traceConsole.classList.add('collapsed');
+                                        traceBadge.style.display = 'inline-flex';
+                                        bubble.style.display = 'block';
+                                    }
+                                    fullBotText += parsed.data;
+                                    bubble.innerHTML = formatMarkdown(fullBotText);
+                                    scrollToBottom();
+                                }
+                                else if (parsed.type === "done") {
+                                    chatHistory.push({ role: 'assistant', content: fullBotText });
+                                }
+                            } catch (err) { }
+                        }
+                    }
+                }
+            } catch (error) {
+                bubble.style.display = 'block';
+                bubble.innerHTML = `<span style="color: #ef4444;">Connection terminated unexpectedly.</span>`;
+            } finally {
+                isWaiting = false; sendBtn.disabled = false;
+                questionInput.focus(); scrollToBottom();
+            }
+        });
+    </script>
+</body>
+
+</html>
