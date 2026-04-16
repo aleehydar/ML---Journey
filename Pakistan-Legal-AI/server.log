@@ -1,326 +1,0 @@
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7300.61it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6955.73it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Will watch for changes in these directories: ['/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI']
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [38781] using StatReload
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 5930.94it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7303.07it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [38908]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-INFO:     127.0.0.1:34272 - "GET /login/?next=/notes/ HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:34272 - "GET /favicon.ico HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:46252 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:46252 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:46252 - "GET /favicon.ico HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:42258 - "POST /chat HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55526 - "POST /chat HTTP/1.1" 200 OK
-INFO:     127.0.0.1:36814 - "POST /chat HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'pakistan_legal_assistant.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [38908]
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6206.78it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5563.17it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [40112]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-INFO:     127.0.0.1:33638 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:33638 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:35048 - "POST /chat HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'pakistan_legal_assistant.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [40112]
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6259.44it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6294.82it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-INFO:     Started server process [40707]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-INFO:     127.0.0.1:51498 - "POST /chat HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49464 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49464 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:48782 - "POST /chat HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'pakistan_legal_assistant.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [40707]
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6195.25it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6691.45it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [41372]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-INFO:     127.0.0.1:33696 - "POST /chat HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56788 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:56788 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59138 - "POST /chat HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'pakistan_legal_assistant.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [41372]
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 5900.19it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 12551.59it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [42254]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-INFO:     127.0.0.1:40254 - "POST /chat HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49188 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49188 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49190 - "POST /chat HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'pakistan_legal_assistant.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [42254]
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 4012.96it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5521.64it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [43612]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  StatReload detected changes in 'app.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [43612]
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7351.43it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5644.50it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [43802]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-📚 Caching pristine PDF pages for Document Explorer API...
-📚 Caching pristine PDF pages for Document Explorer API...
-INFO:     127.0.0.1:53544 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53544 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53544 - "POST /chat HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'app.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [43802]
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6645.47it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2106.26it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [44574]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  StatReload detected changes in 'ingest.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [44574]
-Loading CrossEncoder...
-Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7330.01it/s]
-[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
-Key                          | Status     |  | 
------------------------------+------------+--+-
-bert.embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/pakistan_legal_assistant.py:22: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
-  embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6978.54it/s]
-[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
-Key                     | Status     |  | 
-------------------------+------------+--+-
-embeddings.position_ids | UNEXPECTED |  | 
-
-[3mNotes:
-- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
-INFO:     Started server process [44761]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-📂 Loading persisted FAISS index from /home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/vectorstore/...
-✅ Loaded vectorstore with PDF-ingested documents!
-📚 Caching pristine PDF pages for Document Explorer API...
-Error caching Constitution_of_Pakistan_1973.pdf: pymupdf package not found, please install it with `pip install pymupdf`
-Error caching qanun-e-shahadat-order-1984.pdf: pymupdf package not found, please install it with `pip install pymupdf`
-📚 Caching pristine PDF pages for Document Explorer API...
-Error caching Constitution_of_Pakistan_1973.pdf: pymupdf package not found, please install it with `pip install pymupdf`
-Error caching qanun-e-shahadat-order-1984.pdf: pymupdf package not found, please install it with `pip install pymupdf`
-INFO:     127.0.0.1:35754 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:35754 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:35754 - "POST /chat HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59804 - "GET / HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59804 - "GET /documents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59804 - "POST /chat HTTP/1.1" 200 OK
