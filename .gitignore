@@ -3,3 +3,7 @@ venv/
 __pycache__/
 *.pyc
 deep_learning/data/
+.pytest_cache/
+model/*.pkl
+model/*.json
+*.zip
