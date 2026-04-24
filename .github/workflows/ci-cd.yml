@@ -83,6 +83,7 @@ jobs:
           latest
     
     - name: Build and push Docker image
+      id: docker_build
       uses: docker/build-push-action@v5
       with:
         context: .
@@ -94,7 +95,7 @@ jobs:
         platforms: linux/amd64,linux/arm64
     
     - name: Output image digest
-      run: echo "Image digest - ${{ steps.build.outputs.digest }}"
+      run: echo "Image digest - ${{ steps.docker_build.outputs.digest }}"
 
   # Job 3: Deploy to AWS EC2
   deploy:
