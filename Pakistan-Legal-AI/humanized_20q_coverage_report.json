@@ -1,0 +1,229 @@
+{
+  "timestamp": "2026-04-16T21:29:47.145302+00:00",
+  "total_questions": 20,
+  "answerable_count": 20,
+  "failed_count": 0,
+  "coverage_percent": 100.0,
+  "results": [
+    {
+      "id": 1,
+      "question": "If someone threatens my life, does Pakistani law protect my right to life?",
+      "answerable": true,
+      "match_score": 5,
+      "top_sources": [
+        "PEC2016.pdf",
+        "qanun-e-shahadat-order-1984.pdf",
+        "Pakistan_ang_010117.pdf"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "I got arrested and nobody told me why. Is that legal in Pakistan?",
+      "answerable": true,
+      "match_score": 2,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Financial-institutions-Act-2016-updated.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf"
+      ]
+    },
+    {
+      "id": 3,
+      "question": "My employer makes me work 11 hours daily. Is this allowed?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "PEC2016.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "qanun-e-shahadat-order-1984.pdf"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "I have completed one full year at my job. How many paid leave days should I get?",
+      "answerable": true,
+      "match_score": 7,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "qanun-e-shahadat-order-1984.pdf",
+        "4th and 5th Schedule- Amended.pdf"
+      ]
+    },
+    {
+      "id": 5,
+      "question": "My salary is 700,000 yearly. Roughly how much income tax should I pay?",
+      "answerable": true,
+      "match_score": 6,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "qanun-e-shahadat-order-1984.pdf",
+        "4th and 5th Schedule- Amended.pdf"
+      ]
+    },
+    {
+      "id": 6,
+      "question": "If I earn 200,000 per month, what is my monthly tax estimate?",
+      "answerable": true,
+      "match_score": 6,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "4th and 5th Schedule- Amended.pdf",
+        "Pakistan_ang_010117.pdf"
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Can my landlord throw me out of the house overnight without notice?",
+      "answerable": true,
+      "match_score": 5,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf",
+        "Financial-institutions-Act-2016-updated.pdf"
+      ]
+    },
+    {
+      "id": 8,
+      "question": "I am worried my private chats got leaked. Which Pakistani law can help me?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf",
+        "PEC2016.pdf"
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Can someone share my personal data after divorce without my permission?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf",
+        "PEC2016.pdf"
+      ]
+    },
+    {
+      "id": 10,
+      "question": "As a doctor, can I reveal what my patient told me in confidence?",
+      "answerable": true,
+      "match_score": 1,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Qanun-e-Shahadat - Professional Communication Privilege",
+        "Pakistan_ang_010117.pdf"
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Can the President or Governor be criminally prosecuted during their term?",
+      "answerable": true,
+      "match_score": 5,
+      "top_sources": [
+        "Pakistan_ang_010117.pdf",
+        "Constitution of Pakistan.pdf",
+        "qanun-e-shahadat-order-1984.pdf"
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Does Pakistani law treat men and women equally under the Constitution?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "Pakistan_ang_010117.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Constitution of Pakistan.pdf"
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Is an accomplice still allowed to testify in court in Pakistan?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Privacy Remedies - Pakistan",
+        "Pakistan_ang_010117.pdf"
+      ]
+    },
+    {
+      "id": 14,
+      "question": "What does PECA say about unauthorized access to someone's data?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "Privacy Remedies - Pakistan",
+        "PEC2016.pdf",
+        "Prevention of Electronic Crimes Act, 2016 - Section 20"
+      ]
+    },
+    {
+      "id": 15,
+      "question": "If a company employee steals internal files, what legal trouble can they face?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Companies-Amendment-Act-2021-gazette-copy.pdf",
+        "4th and 5th Schedule- Amended.pdf"
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Is there anything in your documents about Companies Amendment Act 2021?",
+      "answerable": true,
+      "match_score": 6,
+      "top_sources": [
+        "Financial-institutions-Act-2016-updated.pdf",
+        "Companies-Amendment-Act-2021-gazette-copy.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf"
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Do your PDFs include NBFC regulation amendment notifications?",
+      "answerable": true,
+      "match_score": 4,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Financial-institutions-Act-2016-updated.pdf",
+        "Pakistan_ang_010117.pdf"
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Do your docs mention the 4th and 5th schedule amendments?",
+      "answerable": true,
+      "match_score": 4,
+      "top_sources": [
+        "Pakistan_ang_010117.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf",
+        "Financial-institutions-Act-2016-updated.pdf"
+      ]
+    },
+    {
+      "id": 19,
+      "question": "What is the sales tax percentage generally mentioned in Pakistan law?",
+      "answerable": true,
+      "match_score": 4,
+      "top_sources": [
+        "4th and 5th Schedule- Amended.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "qanun-e-shahadat-order-1984.pdf"
+      ]
+    },
+    {
+      "id": 20,
+      "question": "If my privacy is violated, what remedies can I seek in Pakistan?",
+      "answerable": true,
+      "match_score": 3,
+      "top_sources": [
+        "Privacy Remedies - Pakistan",
+        "qanun-e-shahadat-order-1984.pdf",
+        "PEC2016.pdf"
+      ]
+    }
+  ]
+}

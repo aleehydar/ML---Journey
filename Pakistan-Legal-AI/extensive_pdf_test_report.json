@@ -1,0 +1,134 @@
+{
+  "timestamp": "2026-04-16T21:14:58.561725Z",
+  "total_questions": 25,
+  "answered_count": 21,
+  "failed_count": 4,
+  "answer_rate_percent": 84.0,
+  "results": [
+    {
+      "question": "What does Article 9 of the Constitution of Pakistan protect?",
+      "answered": true,
+      "answer": "Article 9 of the Constitution of Pakistan is not provided in the given context. However, I can infer that you are asking about the extraterritorial jurisdiction based on the provided legal context.\n\nAccording to the Pakistan Penal Code, 1860, incorporating amendments up to 16 February 2017, Article 9 states:\n\n\"9[Pakistan] shall be dealt with according to the provision of this Code for any act committed beyond \n10[Pakistan] in the same manner as if such act had been committed within  10[Pakistan].\"\n\nThis implies that Pakistan has extraterritorial jurisdiction over its citizens and others in Pakistan for offenses committed abroad, in the same manner as if the act had been committed within Pakistan.\n\nTherefore, according to this provision, Article 9 of the Pakistan Penal Code protects Pakistan's right to prosecute its citizens and others in Pakistan for crimes committed abroad.\n\nHowever, to answer the question of what Article 9 of the Constitution of Pakistan protects, it is essential to note that the context provided does not mention Article 9 of the Constitution of Pakistan directly."
+    },
+    {
+      "question": "What is guaranteed under Article 25 of the Constitution?",
+      "answered": true,
+      "answer": "Hello! I'd be happy to help with your question about the Pakistan Constitution. To better assist you, could you please rephrase your question or provide more context? What specifically would you like to know about Article 25 of the Constitution?"
+    },
+    {
+      "question": "Can the President of Pakistan be prosecuted while in office under Article 248?",
+      "answered": false,
+      "answer": ""
+    },
+    {
+      "question": "Is an accomplice a competent witness against an accused person?",
+      "answered": true,
+      "answer": "According to the Qanun-e-Shahadat Order 1984, an accomplice is a competent witness against an accused person, except in the case of an offense punishable with Hadd (punishments ordained by Islamic law). This means that an accomplice can provide testimony against the accused, but this exception may apply to certain types of crimes that carry a specific punishment under Islamic law.\n\nThe reasoning behind this provision is to prevent accomplices from being able to escape punishment by testifying against the accused, while also ensuring that justice is served in cases where accomplices have information that can help convict the accused. [Source: qanun-e-shahadat-order-1984.pdf, p. 13]"
+    },
+    {
+      "question": "When can a doctor disclose confidential communication from a patient?",
+      "answered": true,
+      "answer": "A doctor can disclose confidential communication from a patient when it is required to be disclosed to the Court, Tribunal, or other authority exercising judicial or quasi-judicial powers or jurisdiction. This is specified in the Qanun-e-Shahadat Order 1984 [Source: qanun-e-shahadat-order-1984.pdf]."
+    },
+    {
+      "question": "What are the maximum legal working hours per day and per week in Pakistan?",
+      "answered": true,
+      "answer": "I'd be happy to help with any legal questions you may have. However, I couldn't find any information on the maximum legal working hours per day and per week in Pakistan. Could you please be more specific about what you are looking for? Are you asking about the specific laws regarding working hours in Pakistan? If so, please let me know and I'll do my best to assist you."
+    },
+    {
+      "question": "How many annual leave days are available after one year of service?",
+      "answered": true,
+      "answer": "According to the Constitution of Pakistan and the Public Sector Employees Rules of Business, 1973, an employee is entitled to 30 days' annual leave after every two years of service, not after one year of service. However, an employee is entitled to 10 days' casual leave and 10 days' sick leave per year."
+    },
+    {
+      "question": "What is the minimum wage in Pakistan mentioned in the legal database?",
+      "answered": true,
+      "answer": "I'm happy to help you with your query. Since I couldn't find any specific information on the minimum wage in Pakistan within my database, could you please provide more context or specify the laws you are referring to? My database primarily contains the Constitution of Pakistan and the Qanun-e-Shahadat (Code of Civil Procedure). If you have any other questions related to these, I'll be happy to assist you."
+    },
+    {
+      "question": "How is tax calculated for annual income of PKR 700,000?",
+      "answered": true,
+      "answer": "The ANNUAL income tax rate in Pakistan is 0.357% (2,500.00 PKR / 700,000.00 PKR).\n\nAccording to the Income Tax Ordinance, 2001, an individual is exempt from paying income tax if their annual income is below 600,000 PKR. Since the tax payer's income (700,000 PKR) exceeds this threshold, they are liable to pay income tax."
+    },
+    {
+      "question": "How much annual tax applies to PKR 2,400,000 income?",
+      "answered": true,
+      "answer": "According to the Income Tax Ordinance, 2001, Section 2, income tax rates are as follows:\n\n* 0-100,000 PKR: 0%\n* 100,001-200,000 PKR: 5%\n* 200,001-400,000 PKR: 10%\n* 400,001-600,000 PKR: 15%\n* 600,001-1,200,000 PKR: 20%\n* 1,200,001-2,000,000 PKR: 25%\n* 2,000,001-2,400,000 PKR: 30%\n\nBased on this, the taxable amount would be PKR 1,200,000 (2,400,000 - 1,200,000), and the tax rate would be 25%.\n\nTax calculation:\nTaxable income: PKR 1,200,000\nTax rate: 25%\nAnnual tax: PKR 300,000\n\nHowever, since you are above the income tax threshold of PKR 600,000 for the Standard Tax, the tax brackets for Standard Tax apply.\n\nTax calculation:\nTaxable income: PKR 2,400,000\nTax rate: 20% (applicable to the first PKR 1,200,000)\nAnnual tax: PKR 240,000\nTax rate: 25% (applicable to the next PKR 1,200,000)\nAnnual tax: PKR 300,000\nTotal annual tax: PKR 240,000 + PKR 300,000 = PKR 540,000\n\nSince you are not eligible for Standard Tax, we will consider your income under Personal Income Tax:\nTax calculation:\nTaxable income: PKR 2,400,000\nTax rate: 25%\nAnnual tax: PKR 600,000\nPKR 600,000 is deducted for Standard Tax exemption threshold\n\nTax calculation:\nTaxable income: PKR 1,800,000 (2,400,000 - 600,000)\nTax rate: 25%\nAnnual tax: PKR 450,000\n\nPKR 600,000 exemption is applied as per Income Tax Ordinance, 2001, Section 2.\nTherefore, considering the total income above the PKR 600,000 threshold and the applicable tax rate, the annual tax is PKR 165,000."
+    },
+    {
+      "question": "How much annual tax applies to PKR 9,600,000 income?",
+      "answered": true,
+      "answer": "This calculation is based on the income tax slab rates as per the Income Tax Ordinance, 2001. The tax slab rates and calculations can be found in the Ordinance and other relevant laws. The applicable tax rate for income within the slab PKR 2,500,001 to PKR 10,000,000 is 27.5% [Source: Income Tax Ordinance 2001, Section 5].\n\nPlease note that this is a general calculation and the actual tax liability may vary based on individual circumstances, deductions, and exemptions that may apply. It is recommended to consult the Pakistan Revenue Authority (PRA) or a tax professional for a detailed and accurate tax assessment."
+    },
+    {
+      "question": "Can a landlord evict a tenant immediately without notice?",
+      "answered": false,
+      "answer": "It seems we don't have the specific information regarding eviction procedures in Pakistan. Our database currently only contains specific laws, such as the Constitution and Qanun-e-Shahadat.\n\nTo provide you with accurate advice, could you please rephrase your question or provide more context about the situation you're dealing with? This will allow me to better understand your query and offer the most relevant guidance based on the available laws."
+    },
+    {
+      "question": "What does PECA 2016 Section 16 say about personal data sharing?",
+      "answered": true,
+      "answer": "Hello! I'd be happy to help with your question. However, I need a bit more information to provide you with accurate guidance. Could you please rephrase or provide more context about your question regarding PECA 2016 and personal data sharing? I'll do my best to assist you based on the laws in our database."
+    },
+    {
+      "question": "Is sharing an ex-spouse's personal data without consent lawful?",
+      "answered": false,
+      "answer": "It appears we don't have enough information to answer your question about sharing an ex-spouse's personal data without consent. Could you please clarify your question or provide more context so we can better understand your situation?\n\nAlso, please note that our database currently only contains specific laws such as the Constitution and Muslim Family Laws Ordinance, 1961. If your question involves other laws, we may not be able to provide guidance on those."
+    },
+    {
+      "question": "What confidentiality protections exist in Family Courts Act Section 7?",
+      "answered": true,
+      "answer": "Apologies, but I seem to be facing a minor issue here. Can you please rephrase your question? What exactly would you like to know about the Family Courts Act Section 7? I'll do my best to assist you based on my knowledge."
+    },
+    {
+      "question": "Does Pakistan Penal Code discuss punishment for unauthorized access or cyber crime?",
+      "answered": true,
+      "answer": "Based on the retrieved laws, it appears that while the Pakistan Penal Code does not directly address cybercrime, it does provide penalties for related offenses such as defamation and intimidation. The Prevention of Electronic Crimes Act, 2016, specifically addresses unauthorized access to computer systems and critical infrastructure, with penalties ranging from imprisonment to fines.\n\nIt is worth noting that the laws related to cybercrime in Pakistan are evolving, and the Prevention of Electronic Crimes Act, 2016, is a significant step in addressing this issue. However, specific punishments for unauthorized access or cybercrime may need to be clarified in accordance with the Prevention of Electronic Crimes Act, 2016 and other related laws."
+    },
+    {
+      "question": "What does the Constitution say about equality and non-discrimination?",
+      "answered": true,
+      "answer": "The Constitution of Pakistan emphasizes the principle of equality and non-discrimination in various articles. Article 14 of the Constitution states that \"the State shall ensure the dignity of the human person, safeguard the supreme right of life, liberty, equality, and dignity of the human person.\" Article 15 further provides that \"the State shall not discriminate against any citizen on grounds only of religion, race, caste, sex, place of birth or residence, or any of such grounds.\" Article 25 guarantees equality before the law and equal protection under the law for all citizens, regardless of their caste, creed, or social status.\n\nIn addition to these constitutional provisions, the Qanun-e-Shahadat Ordinance, 1984, also emphasizes the importance of equality and non-discrimination. Section 3 of the ordinance states that \"all citizens are equal before the law and are entitled to equal protection of the law.\"\n\nTherefore, based on the retrieved laws, I can advise that equality and non-discrimination are fundamental principles enshrined in the Constitution of Pakistan. Any form of discrimination or unequal treatment of citizens is prohibited under the law. [Source: Constitution of Pakistan.pdf, Article 14, 15, 25]"
+    },
+    {
+      "question": "What does Article 10 cover regarding arrest and detention safeguards?",
+      "answered": true,
+      "answer": "According to Article 10 of the Constitution of Pakistan, there are safeguards regarding arrest and detention. The article states that no person shall be arrested and detained without being informed, as soon as may be, of the grounds for such arrest and detention.\n\nFurthermore, no person shall be detained without being afforded an early opportunity to consult a legal practitioner of his choice; and no person shall be detained in custody, otherwise than by order of a Magistrate, as required by the law."
+    },
+    {
+      "question": "Does your legal database include Companies Amendment Act 2021 details?",
+      "answered": true,
+      "answer": "It appears that my database includes certain details of the Companies Amendment Act 2021. Based on the retrieved documents, the key points of the Act are:\n\n1. The Act aims to amend the Companies Act, 2017. [Source: Companies-Amendment-Act-2021-gazette-copy.pdf]\n2. The Act introduces amendments to the Fourth and Fifth Schedules of the Companies Act, 2017. [Source: Alterations in the fourth and fifth schedules of the Companies Act, 2017.pdf]\n3. Section 507 of the Companies Act, 2017 allows the Securities and Exchange Commission of Pakistan to make alterations in the Third Schedule to the Companies Act. [Source: Notification-PIC-addition-of-sugar-companies-in-3-sch_.pdf]\n4. Section 167 of the Companies Act, 2017 provides for compulsory acquisition of shares in certain circumstances to protect minority shareholders. [Source: Companies Act, 2017 - Section 167]\n\nPlease note that these are the details available in my database, and there might be other aspects of the Companies Amendment Act 2021 that are not covered here."
+    },
+    {
+      "question": "What legal consequences can apply to unauthorized copying of company data?",
+      "answered": true,
+      "answer": "Unauthorized copying of company data can have severe legal consequences in Pakistan. Under the Pakistan Electronic Crimes Act 2016, any person who copies or transmits critical infrastructure data without authorization can be punished with imprisonment up to 6 years and a fine up to PKR 2 million.\n\nAdditionally, sections 228 and 506 of the Pakistan Penal Code can be applied in cases of defamation and criminal intimidation. If a person publishes or communicates false information about a company or its data, they can be punished with imprisonment up to 2 years or a fine. Similarly, if a person threatens another with injury to their person, property, or reputation, they can be punished with imprisonment.\n\nSection 499 of the Pakistan Penal Code also criminalizes defamation, where any person who harms the reputation of another through words, gestures, or visible representations can be punished with imprisonment and a fine.\n\nIt is essential for companies to take necessary measures to protect their data and prevent unauthorized access to prevent such legal consequences.\n\nCitations:\n[Source: PEC2016.pdf], [Source: Pakistan Penal Code - Section 228], [Source: Pakistan Penal Code - Section 506], [Source: Pakistan Penal Code - Section 499], [Source: Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf]"
+    },
+    {
+      "question": "What is the sales tax rate in Pakistan according to your legal texts?",
+      "answered": true,
+      "answer": "I'd be happy to help with your question. However, I need to clarify that I'm a legal advisor trained on specific laws and regulations in Pakistan, primarily focusing on the Constitution of the Islamic Republic of Pakistan, 1973, and the Qanun-e-Shahadat Ordinance, 1962. Could you please rephrase or specify your question regarding sales tax rate in Pakistan, and I'll do my best to provide guidance based on the available laws and regulations."
+    },
+    {
+      "question": "Can someone be forced to self-incriminate under Qanun-e-Shahadat?",
+      "answered": true,
+      "answer": "Based on the retrieved laws, it appears that Qanun-e-Shahadat does not explicitly provide provisions that allow for forced self-incrimination. In fact, Article 20 of the Pakistan Evidence Act, 1872, [Source: pakistan-evidence-act-1872.pdf] states that \"No court, while dealing with any proceeding under the Code of Criminal Procedure, 1898, shall compel any person to answer any question or produce any document which may tend to criminate him or deprive him of any privilege for or in respect of any criminal offence, other than an offence for which he may be liable to be tried by a Magistrate's Court.\"\n\nHowever, Article 21 of the same Act states that \"No court shall compel any person to answer any question which he may refuse to answer on the ground that the answer to such question may tend to criminate him or may expose him to a criminal prosecution or penalty...\" [Source: pakistan-evidence-act-1872.pdf]\n\nWhile these provisions do not explicitly address the issue of forced self-incrimination, they suggest that a person's right to remain silent and avoid self-incrimination is protected under the law. Therefore, it is likely that a person cannot be forced to self-incriminate under Qanun-e-Shahadat."
+    },
+    {
+      "question": "What does the Financial Institutions Act 2016 regulate?",
+      "answered": true,
+      "answer": "Based on the retrieved document, it appears that the Financial Institutions Act 2016 actually refers to the Financial Institutions (Secured Transactions) Act, 2016. This law regulates secured transactions in relation to financial institutions.\n\nAccording to the document, the Act provides a framework for the creation, perfection, and enforcement of security interests in financial assets, as well as the creation of a national collateral registry. This is aimed at promoting financial inclusion and enhancing the efficiency of financial transactions in Pakistan.\n\nSpecifically, the Act regulates the secured transactions of financial institutions, including banks, development financial institutions, insurance companies, and other financial entities. It provides rules for the creation, registration, and enforcement of security interests in financial assets, such as cash and non-cash collateral, and sets out the requirements for the perfection and priority of security interests.\n\n[Source: Financial-institutions-Act-2016-updated.pdf, Page 1]"
+    },
+    {
+      "question": "What changes are discussed in the 4th and 5th schedules amendment PDF?",
+      "answered": true,
+      "answer": "Based on the retrieved document, it appears that the 4th Schedule has been amended vide S.R.O. 1169 (I)/2017 and S.R.O. 888 (I)/2019. However, the changes made are not explicitly stated in the provided snippet. \n\n[Source: 4th and 5th Schedule- Amended.pdf]\n\nIt is recommended to review the amendments in detail to understand the specific changes made to the 4th Schedule.\n\nThe 5th Schedule also appears to have been amended, but the changes are not specified in the provided text. Further review of the document is necessary to determine the nature of the changes.\n\nUnfortunately, without access to the full document or additional information, it is difficult to provide a comprehensive answer to your question. If you have access to the full PDF or can provide more context, I may be able to offer a more detailed and accurate response.\n\nIn absence of the full document, I am unable to provide a detailed answer."
+    },
+    {
+      "question": "What remedies exist if private personal data is leaked without consent in Pakistan?",
+      "answered": false,
+      "answer": "Unfortunately, it appears that my database currently only contains specific laws (like the Constitution and Qanun-e-Shahadat), and I do not have information on the remedies for leaked private personal data in Pakistan.\n\nHowever, I can suggest that you may want to look into the Data Protection Act 2023."
+    }
+  ]
+}

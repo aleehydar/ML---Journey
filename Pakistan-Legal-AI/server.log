@@ -1,0 +1,518 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6131.24it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7973.82it/s]
+[1mBertForSequenceClassification LOAD REPORT[0m from: cross-encoder/ms-marco-MiniLM-L-6-v2
+Key                          | Status     |  | 
+-----------------------------+------------+--+-
+bert.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+INFO:     Started server process [101259]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+📚 Caching pristine PDF pages for Document Explorer API...
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0x9ed6f545ecf86344cbf2259391556bcc",
+        "span_id": "0x304897fe42eaa917",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:43:36.352628Z",
+    "end_time": "2026-04-18T21:43:36.355946Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:57036 - "GET /api/eval/summary HTTP/1.1" 200 OK
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0x8a22de34cb81130d023bb84924e6049f",
+        "span_id": "0x7d67dd13d98bc710",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:48:36.346571Z",
+    "end_time": "2026-04-18T21:48:36.348515Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:50640 - "GET /api/eval/summary HTTP/1.1" 200 OK
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0x80de0aa34c5c28cab1d6a45a15908b3d",
+        "span_id": "0xfff785fef5a296bd",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:53:36.345903Z",
+    "end_time": "2026-04-18T21:53:36.351292Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:43894 - "GET /api/eval/summary HTTP/1.1" 200 OK
+{
+    "name": "GET /",
+    "context": {
+        "trace_id": "0x47d076dd0be8392ab9b1433686bf8bd3",
+        "span_id": "0x9e497c81e3382a30",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:43.802578Z",
+    "end_time": "2026-04-18T21:57:43.812435Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51442 - "GET / HTTP/1.1" 200 OK
+{
+    "name": "GET /documents",
+    "context": {
+        "trace_id": "0xa8a4a0550003c5e1bfe872f0e8775cf0",
+        "span_id": "0x47b06454da427246",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:43.849316Z",
+    "end_time": "2026-04-18T21:57:43.872450Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/documents",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51442 - "GET /documents HTTP/1.1" 200 OK
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0x6cd6b1e59976d3c4724482b17ca0b622",
+        "span_id": "0xee6560b3ec033bce",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:43.850322Z",
+    "end_time": "2026-04-18T21:57:43.878022Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51444 - "GET /api/eval/summary HTTP/1.1" 200 OK
+{
+    "name": "GET /",
+    "context": {
+        "trace_id": "0xdbc2c947834d56e7308318b8bea2b445",
+        "span_id": "0x6cdc29417b6446ac",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:45.246660Z",
+    "end_time": "2026-04-18T21:57:45.247334Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51442 - "GET / HTTP/1.1" 200 OK
+{
+    "name": "GET /documents",
+    "context": {
+        "trace_id": "0xb415ba3258652d8a7d2a00d63f6adc67",
+        "span_id": "0xc09895a9cf31cef3",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:45.272925Z",
+    "end_time": "2026-04-18T21:57:45.297283Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/documents",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51442 - "GET /documents HTTP/1.1" 200 OK
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0x8ba58b4ca50cb8ed1c0401893b842e06",
+        "span_id": "0xfdd249e6d63fa32e",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:45.276475Z",
+    "end_time": "2026-04-18T21:57:45.302791Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51444 - "GET /api/eval/summary HTTP/1.1" 200 OK
+{
+    "name": "POST /chat",
+    "context": {
+        "trace_id": "0xedbf1239b741a34dbcbc2508917ab279",
+        "span_id": "0x9c2eb813f7c9d96a",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:49.122030Z",
+    "end_time": "2026-04-18T21:57:49.125169Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "http://localhost:8000/chat",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51442 - "POST /chat HTTP/1.1" 200 OK
+2026-04-19 02:57:49,899 [INFO] httpx - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|█████     | 1/2 [00:01<00:01,  1.49s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.28s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.31s/it]
+2026-04-19 02:57:53,295 [INFO] httpx - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-19 02:57:53,879 [ERROR] evals.generation_metrics - Error in RAGAS evaluation: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0x391004d399c8cc60ab5cda3c814bc1ca",
+        "span_id": "0x156042be1ff6ec25",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:57:54.887421Z",
+    "end_time": "2026-04-18T21:57:54.889667Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:51442 - "GET /api/eval/summary HTTP/1.1" 200 OK
+{
+    "name": "POST /chat",
+    "context": {
+        "trace_id": "0xa299064bc9d28f30aebe0290e83fe29f",
+        "span_id": "0x9f876a7bcc132247",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:58:10.971819Z",
+    "end_time": "2026-04-18T21:58:10.974588Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "http://localhost:8000/chat",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:37564 - "POST /chat HTTP/1.1" 200 OK
+2026-04-19 02:58:11,268 [INFO] httpx - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|█████     | 1/2 [00:01<00:01,  1.03s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.07s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.06s/it]
+2026-04-19 02:58:14,973 [INFO] httpx - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-19 02:58:15,539 [ERROR] evals.generation_metrics - Error in RAGAS evaluation: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0xcebe2a0abd3f753d5c952d401864ae1f",
+        "span_id": "0x4c290bddd752c734",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:58:16.547286Z",
+    "end_time": "2026-04-18T21:58:16.549490Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:37564 - "GET /api/eval/summary HTTP/1.1" 200 OK
+{
+    "name": "POST /chat",
+    "context": {
+        "trace_id": "0x14038836a63616d6f21437a4568b1fb8",
+        "span_id": "0x319848b1c2f480f6",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:58:46.138611Z",
+    "end_time": "2026-04-18T21:58:46.142892Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "POST",
+        "http.url": "http://localhost:8000/chat",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:55080 - "POST /chat HTTP/1.1" 200 OK
+2026-04-19 02:58:46,759 [INFO] httpx - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|█████     | 1/2 [00:01<00:01,  1.95s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.39s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.47s/it]
+2026-04-19 02:58:50,575 [INFO] httpx - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-19 02:58:51,153 [ERROR] evals.generation_metrics - Error in RAGAS evaluation: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+{
+    "name": "GET /api/eval/summary",
+    "context": {
+        "trace_id": "0x9b3b9edc75d8cf60358bf74778a832cb",
+        "span_id": "0xac5d1dd141f185c5",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-04-18T21:58:52.161364Z",
+    "end_time": "2026-04-18T21:58:52.163061Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.url": "http://localhost:8000/api/eval/summary",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.41.0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
+    }
+}
+INFO:     127.0.0.1:55080 - "GET /api/eval/summary HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [101259]

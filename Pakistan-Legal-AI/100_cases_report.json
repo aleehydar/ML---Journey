@@ -1,0 +1,609 @@
+{
+  "timestamp": "2026-04-20T19:52:07.617693+00:00",
+  "total_questions": 100,
+  "answered_count": 0,
+  "failed_count": 100,
+  "success_rate_percent": 0.0,
+  "results": [
+    {
+      "id": 1,
+      "question": "Does the Constitution of Pakistan guarantee the right to life and liberty?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 2,
+      "question": "Can the right to fair trial be denied under the Constitution of Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 3,
+      "question": "What are the qualifications to become the President of Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 4,
+      "question": "Under what circumstances can the Prime Minister of Pakistan be removed?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 5,
+      "question": "Who appoints the Chief Justice of Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 6,
+      "question": "What is the retirement age for a Supreme Court Judge in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 7,
+      "question": "Does the Constitution allow discrimination on the basis of sex in public employment?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 8,
+      "question": "What is the official language of Pakistan according to the Constitution?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 9,
+      "question": "What is the maximum duration for an emergency to remain in force without parliamentary approval?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 10,
+      "question": "Can a non-Muslim become the President of Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 11,
+      "question": "What is the procedure to amend the Constitution of Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 12,
+      "question": "Can the National Assembly be dissolved prematurely? If yes, by whom?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 13,
+      "question": "What are the fundamental rights given to citizens in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 14,
+      "question": "Is primary education mandatory and free in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 15,
+      "question": "Under what Article is freedom of speech guaranteed?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 16,
+      "question": "Can double jeopardy apply in criminal prosecution according to the Constitution?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 17,
+      "question": "Does the Constitution provide safeguards against illegal arrest?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 18,
+      "question": "What is the jurisdiction of the Federal Shariat Court?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 19,
+      "question": "How are the seats in the Senate distributed among provinces?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 20,
+      "question": "Can fundamental rights be suspended during a state of emergency?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 21,
+      "question": "How many witnesses are required to prove an obligation according to Qanun-e-Shahadat?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 22,
+      "question": "Is the testimony of an accomplice admissible in court?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 23,
+      "question": "When is a confession made to a police officer admissible?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 24,
+      "question": "Does Qanun-e-Shahadat apply to proceedings before an arbitrator?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 25,
+      "question": "Can a child testify in a Pakistani court?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 26,
+      "question": "What is privileged communication under the Evidence Act?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 27,
+      "question": "Can a lawyer disclose a client's confidential information?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 28,
+      "question": "What is the evidential value of an expert opinion in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 29,
+      "question": "Who bears the burden of proof in a criminal case?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 30,
+      "question": "Can a husband or wife be compelled to disclose communication made during marriage?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 31,
+      "question": "What constitutes documentary evidence in Qanun-e-Shahadat?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 32,
+      "question": "Is electronic evidence admissible in court in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 33,
+      "question": "What is the presumption regarding a document older than 30 years?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 34,
+      "question": "Can a person be forced to answer a question that might incriminate them?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 35,
+      "question": "What is primary evidence versus secondary evidence?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 36,
+      "question": "In financial matters, does the law prefer oral or written evidence?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 37,
+      "question": "Is a confession by an accused person made under threat valid?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 38,
+      "question": "How is the credibility of a witness established or challenged?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 39,
+      "question": "Can an idiot or lunatic testify if they can understand the questions?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 40,
+      "question": "What happens if part of a confession is exculpatory and part is inculpatory?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 41,
+      "question": "What is the income tax exemption limit for a salaried person in Pakistan for 2023-2024?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 42,
+      "question": "How much tax will I pay if my annual salary is 1,500,000 PKR?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 43,
+      "question": "What is the difference between tax rates for a filer and a non-filer?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 44,
+      "question": "Is income from agriculture taxable by the Federal Government?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 45,
+      "question": "What is the standard rate of Sales Tax in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 46,
+      "question": "Are exports subject to sales tax?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 47,
+      "question": "What is the penalty for late filing of income tax returns?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 48,
+      "question": "How is capital gains tax calculated on the sale of property?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 49,
+      "question": "Are IT exports exempt from income tax in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 50,
+      "question": "What is withholding tax?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 51,
+      "question": "Do I have to pay tax on foreign remittances received through standard banking channels?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 52,
+      "question": "Can I claim tax credits for charitable donations?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 53,
+      "question": "How long do I need to keep financial records for tax purposes?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 54,
+      "question": "Is provident fund withdrawal taxable in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 55,
+      "question": "What is the tax rate on dividend income?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 56,
+      "question": "Are pensions taxable in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 57,
+      "question": "What is Advance Tax?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 58,
+      "question": "Can the Federal Board of Revenue freeze bank accounts?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 59,
+      "question": "What is the sales tax rate on telecom services?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 60,
+      "question": "Is Zakat deducted at source allowed as a tax deduction?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 61,
+      "question": "What is the maximum number of working hours in a week according to Pakistani labor laws?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 62,
+      "question": "How much overtime pay is a worker legally entitled to?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 63,
+      "question": "How many days of annual paid leave are mandated?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 64,
+      "question": "Are female employees entitled to maternity leave?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 65,
+      "question": "How many days of maternity leave are provided by law?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 66,
+      "question": "Can an employer terminate a worker without giving notice?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 67,
+      "question": "What is the mandatory notice period before termination?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 68,
+      "question": "Is a company required to pay a gratuity to an employee upon resignation?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 69,
+      "question": "What is the minimum wage for unskilled workers in Pakistan currently?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 70,
+      "question": "Can children under 14 be legally employed in factories?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 71,
+      "question": "Are workers entitled to sick leave with full pay?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 72,
+      "question": "How many casual leaves are allowed per year?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 73,
+      "question": "Can a worker form or join a trade union?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 74,
+      "question": "What happens if an employee is injured on duty?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 75,
+      "question": "Is there a legal requirement to provide a written employment contract?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 76,
+      "question": "Can female workers be compelled to work night shifts?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 77,
+      "question": "What constitutes unfair labor practices by an employer?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 78,
+      "question": "Are bonuses mandatory under the law?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 79,
+      "question": "Can a fixed-term employee be fired before the contract expires?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 80,
+      "question": "Is group insurance mandatory for industrial workers?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 81,
+      "question": "What is the punishment for unauthorized access to an information system under PECA 2016?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 82,
+      "question": "How does PECA define cyber terrorism?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 83,
+      "question": "Is online defamation a criminal offense in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 84,
+      "question": "What are the penalties for hate speech on the internet?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 85,
+      "question": "Can a person be punished for sharing someone's private pictures without consent?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 86,
+      "question": "What authority is responsible for investigating cybercrimes in Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 87,
+      "question": "Can the PTA block websites?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 88,
+      "question": "What is the punishment for electronic forgery?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 89,
+      "question": "How does the law deal with cyber stalking?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 90,
+      "question": "Are internet service providers liable for the content accessed through their networks?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 91,
+      "question": "Can law enforcement search and seize computer systems without a warrant?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 92,
+      "question": "What is the maximum penalty for child pornography offenses under PECA?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 93,
+      "question": "Is spoofing an offense under Pakistani cyber law?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 94,
+      "question": "Does PECA apply to crimes committed against Pakistani citizens by people outside Pakistan?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 95,
+      "question": "How is 'critical information infrastructure' protected?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 96,
+      "question": "What remedies exist if someone creates a fake social media profile of me?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 97,
+      "question": "Can electronic evidence collected by FIA be used in a normal criminal court?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 98,
+      "question": "What is the punishment for transferring funds electronically through fraud?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 99,
+      "question": "Do telecom companies have to retain subscriber data?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": 100,
+      "question": "What are the limits of freedom of expression under the bounds of PECA?",
+      "answered": false,
+      "answer_preview": "ERROR: INSUFFICIENT_EVIDENCE"
+    }
+  ]
+}

@@ -1,13 +1,38 @@
-from fastapi import FastAPI, Request
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+from fastapi import Depends, FastAPI, Request
 from fastapi.responses import HTMLResponse, StreamingResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from typing import List, Dict, Optional
 import uvicorn
 
-from pakistan_legal_assistant import answer_legal_question, legal_texts, vectorstore
+from auth_middleware import AuthClaims, require_permission
+from db.schema import db_schema as eval_db
+from generation_service import generation_service
+from retrieval_service import retrieval_service
+
+from monitoring.tracing import init_tracing
+from middleware.observability import ObservabilityMiddleware
+from api.routes import chat, governance
+from prometheus_client import make_asgi_app
+
+init_tracing()
 
 app = FastAPI(title="Pakistan Legal Assistant API", description="Production RAG Assistant with Agent UI")
+
+# Add Middlewares
+app.add_middleware(ObservabilityMiddleware)
+
+# Prometheus metrics endpoint
+metrics_app = make_asgi_app()
+app.mount("/metrics", metrics_app)
+
+# Include Routers
+app.include_router(chat.router)
+app.include_router(governance.router)
 
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -85,20 +110,48 @@ if os.path.exists(DATA_DIR):
             print(f"Error caching {pdf_file}: {e}")
 
 @app.get("/documents")
-async def get_documents():
+async def get_documents(claims: AuthClaims = Depends(require_permission("docs:read"))):
     """Return the raw legal texts so the frontend can populate the right panel safely."""
     # If we successfully cached PDF pages directly, return them natively
-    if global_doc_map:
+    if global_doc_map and claims.org_id == "public":
         return JSONResponse(global_doc_map)
     
-    # Fallback to hardcoded sample texts if FAISS and PDFs are missing
-    return JSONResponse({item["source"]: item["text"] for item in legal_texts})
+    return JSONResponse(retrieval_service.get_documents_for_org(claims.org_id))
 
 @app.post("/chat")
-async def chat_endpoint(req: QuestionRequest):
+async def chat_endpoint(
+    req: QuestionRequest,
+    claims: AuthClaims = Depends(require_permission("chat:write")),
+):
     """Accept user question and history, returns Server-Sent Events stream."""
-    generator = answer_legal_question(req.question, history=req.history)
+    generator = generation_service.answer_legal_question(
+        req.question,
+        history=req.history,
+        user_id=claims.sub,
+        org_id=claims.org_id,
+        permissions=claims.permissions,
+    )
     return StreamingResponse(generator, media_type="text/event-stream")
+
+@app.get("/api/eval/summary")
+async def get_evaluation_summary(
+    claims: AuthClaims = Depends(require_permission("eval:read")),
+):
+    """Get rolling averages for evaluation metrics including hallucination rate."""
+    try:
+        rolling_averages = eval_db.get_rolling_averages(claims.org_id)
+        time_series_data = eval_db.get_time_series_data(claims.org_id, days=30)
+        
+        return JSONResponse({
+            "rolling_averages": rolling_averages,
+            "time_series": time_series_data,
+            "org_id": claims.org_id,
+        })
+    except Exception as e:
+        return JSONResponse(
+            {"error": f"Failed to fetch evaluation summary: {str(e)}"}, 
+            status_code=500
+        )
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

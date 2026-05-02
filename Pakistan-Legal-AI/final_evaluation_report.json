@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-04-24T20:39:29.255977+00:00",
+  "total_tested": 11,
+  "valid_evals": 0,
+  "average_metrics": {
+    "faithfulness": 0,
+    "answer_relevance": 0,
+    "context_recall": 0
+  },
+  "details": [
+    {
+      "question": "What are the fundamental rights of a citizen regarding arrest and detention?",
+      "answer": "Based on the search results, the fundamental rights of a citizen regarding arrest and detention are not explicitly stated in the provided search results. However, the Constitution of Pakistan and the Pakistan Legal Database do mention the importance of safeguarding arrest and detention, and laws that are inconsistent with or derogate from fundamental rights are considered void. \n\nTo find a more specific answer, further searching or consultation with relevant legal authorities would be necessary.",
+      "sources": [
+        "Constitution of Pakistan.pdf",
+        "Pakistan_ang_010117.pdf"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "Can the federal government borrow money? Under what limits?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [
+        "Constitution of Pakistan.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Pakistan_ang_010117.pdf"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "What is the penalty for cyber terrorism under PECA 2016?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [
+        "Prevention of Electronic Crimes Act, 2016 - Section 21",
+        "PEC2016.pdf",
+        "Prevention of Electronic Crimes Act, 2016 - Section 20"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "Does the Qanun-e-Shahadat order allow accomplices as competent witnesses?",
+      "answer": "An accomplice can be a competent witness against an accused person, except in the case of an offense punishable with hadd [Source: qanun-e-shahadat-order-1984.pdf].",
+      "sources": [
+        "qanun-e-shahadat-order-1984.pdf"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "What does the labor law say about termination of employment?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [
+        "Labor Law - Minimum Wage 2024"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "What are the constitutional immunities of the President of Pakistan?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [
+        "Constitution of Pakistan.pdf",
+        "Pakistan_ang_010117.pdf"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "I earn 1,500,000 PKR annually, what is my tax?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [
+        "Tax Law - Income Tax"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "What is the income tax on a salary of 3,500,000 PKR?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [
+        "Tax Law - Income Tax"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "My monthly salary is 200,000 PKR. How much tax do I pay in a year?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [
+        "Tax Law - Income Tax"
+      ],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "Hello! How are you?",
+      "answer": "I'm doing well, thank you for asking. It's nice to meet a user who is interested in learning about Pakistani law. I'm here to help answer any questions you may have. What would you like to know?",
+      "sources": [],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "What can you do?",
+      "answer": "ERROR: INSUFFICIENT_EVIDENCE",
+      "sources": [],
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevance": 0.0,
+        "context_recall": 0.0
+      }
+    }
+  ]
+}

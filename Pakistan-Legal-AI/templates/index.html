@@ -517,12 +517,164 @@
             }
         }
 
+        /* Metrics Dashboard Styles */
+        .metrics-panel {
+            width: 380px;
+            min-width: 380px;
+        }
+
+        .metrics-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .metric-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .metric-card.main-metric {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+        }
+
+        .main-metric .metric-value {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .metric-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.8;
+        }
+
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .sparkline-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .sparkline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .sparkline-title {
+            font-size: 0.875rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .sparkline-period {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        #trend-sparkline {
+            width: 100%;
+            height: 80px;
+            border-radius: 8px;
+        }
+
+        .period-selector {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 0.25rem;
+        }
+
+        .period-btn {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .period-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+        }
+
+        .period-btn.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary-glow);
+            font-weight: 500;
+        }
+
+        .refresh-btn {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            padding: 0.5rem;
+            color: var(--primary-glow);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: rotate(180deg);
+        }
+
         @media (max-width: 900px) {
             .dashboard-wrapper {
                 flex-direction: column;
                 height: 100vh;
                 width: 100%;
                 border-radius: 0;
+            }
+
+            .metrics-panel {
+                width: 100%;
+                min-width: unset;
+                order: 2;
             }
 
             .doc-panel {
@@ -533,6 +685,19 @@
             .panel {
                 border-radius: 0;
                 border: none;
+            }
+
+            .metrics-row {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .metric-value {
+                font-size: 2rem;
+            }
+
+            .main-metric .metric-value {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -580,6 +745,63 @@
             </footer>
         </div>
 
+        <!-- Center: Hallucination Metrics Dashboard -->
+        <div class="panel metrics-panel">
+            <header class="panel-header" style="background: rgba(3, 7, 18, 0.8);">
+                <div class="header-titles">
+                    <h1 style="font-size: 1rem; color: #94a3b8;"><i class="fa-solid fa-chart-line"
+                            style="margin-right: 8px;"></i> Hallucination Metrics</h1>
+                </div>
+                <button class="refresh-btn" onclick="refreshMetrics()" title="Refresh metrics">
+                    <i class="fa-solid fa-sync-alt"></i>
+                </button>
+            </header>
+
+            <div class="metrics-content">
+                <!-- Hallucination Rate (Main Metric) -->
+                <div class="metric-card main-metric">
+                    <div class="metric-label">Hallucination Rate</div>
+                    <div class="metric-value" id="hallucination-rate">--%</div>
+                    <div class="metric-subtitle">Faithfulness < 0.7 (Last 7 days)</div>
+                </div>
+
+                <!-- Secondary Metrics -->
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <div class="metric-label">Faithfulness</div>
+                        <div class="metric-value" id="faithfulness-avg">--</div>
+                        <div class="metric-subtitle">7-day avg</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Answer Relevance</div>
+                        <div class="metric-value" id="relevance-avg">--</div>
+                        <div class="metric-subtitle">7-day avg</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Context Recall</div>
+                        <div class="metric-value" id="recall-avg">--</div>
+                        <div class="metric-subtitle">7-day avg</div>
+                    </div>
+                </div>
+
+                <!-- Time Series Sparkline -->
+                <div class="sparkline-container">
+                    <div class="sparkline-header">
+                        <span class="sparkline-title">30-Day Trend</span>
+                        <span class="sparkline-period" id="trend-period">Last 30 days</span>
+                    </div>
+                    <canvas id="trend-sparkline" width="300" height="80"></canvas>
+                </div>
+
+                <!-- Period Selector -->
+                <div class="period-selector">
+                    <button class="period-btn active" data-period="7_days" onclick="changePeriod('7_days')">7 Days</button>
+                    <button class="period-btn" data-period="30_days" onclick="changePeriod('30_days')">30 Days</button>
+                    <button class="period-btn" data-period="all_time" onclick="changePeriod('all_time')">All Time</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Right: Document Viewer -->
         <div class="panel doc-panel">
             <header class="panel-header" style="background: rgba(3, 7, 18, 0.8);">
@@ -619,11 +841,15 @@
         let chatHistory = [];
         let isWaiting = false;
         let legalDocuments = {}; // Fetched on load
+        
+        const testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0X3VzZXIiLCJvcmdfaWQiOiJwdWJsaWMiLCJwZXJtaXNzaW9ucyI6WyIqIl19.pvCjbluYl4lPoNYAWHc5iTr8YXB6ROE5ZfnpWwW5lZs";
 
         // Load document database for right panel
         async function fetchDocuments() {
             try {
-                const res = await fetch('/documents');
+                const res = await fetch('/documents', {
+                    headers: { 'Authorization': 'Bearer ' + testToken }
+                });
                 legalDocuments = await res.json();
             } catch (err) {
                 console.error("Failed to load document metadata.");
@@ -725,7 +951,10 @@
             try {
                 const response = await fetch('/chat', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + testToken
+                    },
                     body: JSON.stringify({ question: text, history: payloadHistory })
                 });
 
@@ -777,9 +1006,17 @@
                                         traceBadge.style.display = 'inline-flex';
                                         bubble.style.display = 'block';
                                     }
-                                    fullBotText += parsed.data;
+                                    if (parsed.data === "ERROR: INSUFFICIENT_EVIDENCE") {
+                                        fullBotText = "I couldn't find enough specific information in my legal database to confidently answer your question. I am strictly programmed to avoid guessing. Try rephrasing your question or specifying a particular article or domain (e.g., Constitution, Tax, Labor).";
+                                    } else {
+                                        fullBotText += parsed.data;
+                                    }
                                     bubble.innerHTML = formatMarkdown(fullBotText);
                                     scrollToBottom();
+                                }
+                                else if (parsed.type === "evaluation") {
+                                    // Handle evaluation metrics
+                                    handleEvaluationEvent(parsed.data);
                                 }
                                 else if (parsed.type === "done") {
                                     chatHistory.push({ role: 'assistant', content: fullBotText });
@@ -796,6 +1033,167 @@
                 questionInput.focus(); scrollToBottom();
             }
         });
+
+        // Metrics Dashboard Functions
+        let currentPeriod = '7_days';
+        let metricsData = null;
+
+        // Initialize metrics on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshMetrics();
+            // Auto-refresh every 5 minutes
+            setInterval(refreshMetrics, 5 * 60 * 1000);
+        });
+
+        async function refreshMetrics() {
+            try {
+                const response = await fetch('/api/eval/summary', {
+                    headers: { 'Authorization': 'Bearer ' + testToken }
+                });
+                if (!response.ok) throw new Error('Failed to fetch metrics');
+                
+                metricsData = await response.json();
+                updateMetricsDisplay();
+                drawSparkline();
+            } catch (error) {
+                console.error('Error fetching metrics:', error);
+                // Show error state
+                document.getElementById('hallucination-rate').textContent = 'Error';
+                document.getElementById('faithfulness-avg').textContent = '--';
+                document.getElementById('relevance-avg').textContent = '--';
+                document.getElementById('recall-avg').textContent = '--';
+            }
+        }
+
+        function updateMetricsDisplay() {
+            if (!metricsData || !metricsData.rolling_averages) return;
+            
+            const period = metricsData.rolling_averages[currentPeriod];
+            if (!period) return;
+            
+            // Update main hallucination rate
+            document.getElementById('hallucination-rate').textContent = `${period.hallucination_rate}%`;
+            
+            // Update secondary metrics
+            document.getElementById('faithfulness-avg').textContent = period.avg_faithfulness.toFixed(2);
+            document.getElementById('relevance-avg').textContent = period.avg_answer_relevance.toFixed(2);
+            document.getElementById('recall-avg').textContent = period.avg_context_recall.toFixed(2);
+            
+            // Update period subtitle
+            const periodText = currentPeriod === '7_days' ? 'Last 7 days' : 
+                            currentPeriod === '30_days' ? 'Last 30 days' : 'All time';
+            document.querySelector('.main-metric .metric-subtitle').textContent = `Faithfulness < 0.7 (${periodText})`;
+            document.querySelectorAll('.metric-subtitle')[1].textContent = periodText;
+            document.querySelectorAll('.metric-subtitle')[2].textContent = periodText;
+            document.querySelectorAll('.metric-subtitle')[3].textContent = periodText;
+        }
+
+        function changePeriod(period) {
+            currentPeriod = period;
+            
+            // Update button states
+            document.querySelectorAll('.period-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-period="${period}"]`).classList.add('active');
+            
+            // Update display
+            updateMetricsDisplay();
+        }
+
+        function drawSparkline() {
+            if (!metricsData || !metricsData.time_series) return;
+            
+            const canvas = document.getElementById('trend-sparkline');
+            const ctx = canvas.getContext('2d');
+            const data = metricsData.time_series;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (data.length === 0) return;
+            
+            // Extract hallucination rates
+            const rates = data.map(d => d.hallucination_rate);
+            const maxRate = Math.max(...rates, 1);
+            const minRate = Math.min(...rates, 0);
+            const range = maxRate - minRate || 1;
+            
+            // Set up canvas dimensions
+            const padding = 10;
+            const width = canvas.width - 2 * padding;
+            const height = canvas.height - 2 * padding;
+            
+            // Draw grid lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+            
+            // Draw the line chart
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            data.forEach((point, index) => {
+                const x = padding + (index / (data.length - 1)) * width;
+                const y = canvas.height - padding - ((point.hallucination_rate - minRate) / range) * height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.stroke();
+            
+            // Draw points
+            ctx.fillStyle = '#ef4444';
+            data.forEach((point, index) => {
+                const x = padding + (index / (data.length - 1)) * width;
+                const y = canvas.height - padding - ((point.hallucination_rate - minRate) / range) * height;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 3, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+            
+            // Draw gradient fill under the line
+            const gradient = ctx.createLinearGradient(0, padding, 0, canvas.height - padding);
+            gradient.addColorStop(0, 'rgba(239, 68, 68, 0.3)');
+            gradient.addColorStop(1, 'rgba(239, 68, 68, 0.05)');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            
+            data.forEach((point, index) => {
+                const x = padding + (index / (data.length - 1)) * width;
+                const y = canvas.height - padding - ((point.hallucination_rate - minRate) / range) * height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // Handle evaluation events from chat
+        function handleEvaluationEvent(evaluationData) {
+            // Update metrics in real-time when evaluation is received
+            console.log('Received evaluation:', evaluationData);
+            // Optionally trigger a refresh after a short delay
+            setTimeout(refreshMetrics, 1000);
+        }
     </script>
 </body>
 

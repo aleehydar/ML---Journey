@@ -14,6 +14,11 @@ services:
     ports:
       - "8000:8000"              # Map host port 8000 → container port 8000
     environment:
-      - GROQ_API_KEY=${GROQ_API_KEY}  # Read from local .env file automatically
+      - GROQ_API_KEY=${GROQ_API_KEY}
     volumes:
-      - .:/app                   # Mount local code for hot-reload during dev
+      - ./data:/app/data
+      - ./vectorstore:/app/vectorstore
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

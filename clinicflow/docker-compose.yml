@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  clinicflow:
+    build: .
+    image: aleehydar/clinicflow-api:latest
+    container_name: clinicflow_api
+    ports:
+      - "8001:8001"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TRANSFORMERS_CACHE=/tmp/hf_cache
+      - HF_HOME=/tmp/hf_cache
+    restart: unless-stopped
+    # Note: the existing attrition API is assumed to be running independently on port 8000.

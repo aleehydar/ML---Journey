@@ -1,0 +1,51 @@
+🚀 Starting Automated Evaluation Pipeline...
+
+[1/11] Query: 'What are the fundamental rights of a citizen regarding arrest and detention?'
+  └ Answer snippet: Based on the search results, the fundamental rights of a cit...
+  └ Metrics: N/A (General chat or error)
+
+[2/11] Query: 'Can the federal government borrow money? Under what limits?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+[3/11] Query: 'What is the penalty for cyber terrorism under PECA 2016?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+[4/11] Query: 'Does the Qanun-e-Shahadat order allow accomplices as competent witnesses?'
+  └ Answer snippet: An accomplice can be a competent witness against an accused ...
+  └ Metrics: N/A (General chat or error)
+
+[5/11] Query: 'What does the labor law say about termination of employment?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+[6/11] Query: 'What are the constitutional immunities of the President of Pakistan?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+[7/11] Query: 'I earn 1,500,000 PKR annually, what is my tax?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+[8/11] Query: 'What is the income tax on a salary of 3,500,000 PKR?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+[9/11] Query: 'My monthly salary is 200,000 PKR. How much tax do I pay in a year?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+[10/11] Query: 'Hello! How are you?'
+  └ Answer snippet: I'm doing well, thank you for asking. It's nice to meet a us...
+  └ Metrics: N/A (General chat or error)
+
+[11/11] Query: 'What can you do?'
+  └ Answer snippet: ERROR: INSUFFICIENT_EVIDENCE...
+  └ Metrics: N/A (General chat or error)
+
+✅ Evaluation Complete!
+  - Avg Faithfulness:   0.00
+  - Avg Relevance:      0.00
+  - Avg Context Recall: 0.00
+Saved report to final_evaluation_report.json

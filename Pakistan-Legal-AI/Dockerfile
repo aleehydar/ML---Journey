@@ -17,26 +17,38 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Layer 3: Set working directory inside the container
 WORKDIR /app
 
-# Layer 4: Install system dependencies (for sentence-transformers FAISS build)
+# Layer 4: Install system dependencies & Syft for SBOM
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
+    build-essential curl wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Layer 5: Copy requirements FIRST (Docker caches this layer separately)
-# This means if you only change app code, Docker won't re-install dependencies!
+# Layer 5: Create non-root user and set permissions
+RUN useradd -m -s /bin/bash appuser && \
+    mkdir -p /app/data /app/vectorstore /app/monitoring && \
+    chown -R appuser:appuser /app
+
+# Layer 6: Copy requirements FIRST (Docker caches this layer separately)
 COPY requirements.txt .
 
-# Layer 6: Install Python dependencies
-RUN pip install --no-cache-dir fastapi uvicorn langchain langchain-groq \
-    langchain-community sentence-transformers faiss-cpu python-dotenv \
-    langchain-core
+# Layer 7: Install Python dependencies
+# Pre-install PyTorch explicitly targeting CPU to bypass multi-gigabyte CUDA downloads
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Layer 7: Copy the rest of the application code
-COPY . .
+# Layer 8: Download Syft to generate SBOM (optional artifact step in build)
+RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
-# Layer 8: Expose the FastAPI port
+# Layer 9: Copy the rest of the application code
+COPY --chown=appuser:appuser . .
+
+# Generate an SBOM for audit
+RUN syft dir:. -o cyclonedx-json=bom.json && chown appuser:appuser bom.json
+
+# Layer 10: Switch to non-root user
+USER appuser
+
+# Layer 11: Expose the FastAPI port
 EXPOSE 8000
 
-# Layer 9: Start the Uvicorn server
-# --host 0.0.0.0 makes it reachable from outside the container
+# Layer 12: Start the Uvicorn server
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-04-16T21:33:33.864923+00:00",
+  "total_questions": 20,
+  "answered_count": 19,
+  "failed_count": 1,
+  "answer_rate_percent": 95.0,
+  "results": [
+    {
+      "question": "If someone threatens my life, does Pakistani law protect my right to life?",
+      "answered": true,
+      "answer": "Based on the retrieved laws, Pakistani law does protect the right to life. According to the Constitution of Pakistan, the rights of citizens, including their lives, are safeguarded. Section 3 of the Human Rights Commission of Pakistan Act, 2012 further emphasizes the protection of human rights in Pakistan, which includes the right to life. \n\nIf someone threatens your life, you can seek protection under the law. Section 506 of the Pakistan Penal Code specifically deals with criminal intimidation, which includes threats to a person's life. If you feel threatened, you can contact the police or other law enforcement agencies to report the incident and seek necessary protection.\n\nPlease note that you should always seek advice from a qualified lawyer or law enforcement agency for specific guidance on your situation."
+    },
+    {
+      "question": "I got arrested and nobody told me why. Is that legal in Pakistan?",
+      "answered": true,
+      "answer": "Based on the retrieved laws, it appears that being arrested without explanation in Pakistan may be permissible under certain circumstances. According to the Pakistan Penal Code, a person can be arrested for various offenses, including criminal intimidation (Section 506) and defamation (Section 228). If you have been arrested without explanation, it is essential to request the reason for your arrest and seek legal advice.\n\nAs per the Pakistan Penal Code, law enforcement officials have the authority to arrest individuals suspected of committing an offense (Section 6). However, the Code also emphasizes the importance of providing information about the arrested person to the nearest Magistrate within 24 hours (Section 56).\n\nI recommend that you exercise your right to know the reason for your arrest and seek legal counsel to ensure your rights are protected."
+    },
+    {
+      "question": "My employer makes me work 11 hours daily. Is this allowed?",
+      "answered": true,
+      "answer": "Based on the retrieved documents, it appears that your employer's requirement for you to work 11 hours daily may be in violation of the labor laws in Pakistan. The federal minimum wage law and the working hours law both suggest that workers should not be required to work more than 9 hours per day. Overtime is governed by applicable labor law, but this does not seem to justify a daily work period of 11 hours.\n\nYou may want to review your employment contract and discuss your working hours with your employer. If you feel that your working hours are unreasonable or in violation of the law, you may want to consider seeking advice from a labor rights organization or a lawyer.\n\nPlease note that the retrieved documents do not specifically address the issue of working hours in your specific industry or profession. However, the general principles of labor law in Pakistan appear to support your right to reasonable working hours."
+    },
+    {
+      "question": "I have completed one full year at my job. How many paid leave days should I get?",
+      "answered": true,
+      "answer": "According to the Labor Law, you are entitled to at least 14 days of annual leave with full pay after completing one year of service."
+    },
+    {
+      "question": "My salary is 700,000 yearly. Roughly how much income tax should I pay?",
+      "answered": true,
+      "answer": "Based on the information provided by the tool, the annual income tax for a yearly salary of 700,000.00 PKR is 2,500.00 PKR.\n\nHowever, please note that this is a simplified calculation and actual income tax may vary based on various factors such as deductions, exemptions, and tax laws.\n\nAccording to the Income Tax Ordinance 2001, the tax rates for individual taxpayers are as follows:\n\n- 0% on taxable income up to 300,000 PKR\n- 5% on taxable income between 300,001 and 400,000 PKR\n- 10% on taxable income between 400,001 and 600,000 PKR\n- 15% on taxable income between 600,001 and 800,000 PKR\n- 18% on taxable income above 800,000 PKR\n\nPlease consult the relevant tax authorities or a tax professional for a more accurate calculation and to determine your specific tax liability.\n\n[Source: income_tax_ordinance_2001.pdf, Pakistan Tax Laws]"
+    },
+    {
+      "question": "If I earn 200,000 per month, what is my monthly tax estimate?",
+      "answered": true,
+      "answer": "To find the monthly tax, we can simply divide the annual tax by 12:\n\nMonthly Tax = 165,000.00 PKR / 12 ≈ 13,750.00 PKR\n\nSo, your estimated monthly tax would be approximately 13,750.00 PKR."
+    },
+    {
+      "question": "Can my landlord throw me out of the house overnight without notice?",
+      "answered": false,
+      "answer": ""
+    },
+    {
+      "question": "I am worried my private chats got leaked. Which Pakistani law can help me?",
+      "answered": true,
+      "answer": "I'm not sure I quite understand the connection between these laws and your concern about private chats getting leaked. Could you please be more specific about what you're looking for help with? Are you wondering how to protect your privacy online or what you can do if you suspect your private chats have been leaked?"
+    },
+    {
+      "question": "Can someone share my personal data after divorce without my permission?",
+      "answered": true,
+      "answer": "Based on the retrieved information, sharing personal data without your consent after a divorce may be considered an unauthorized disclosure. You can seek remedies under the Prevention of Electronic Crimes Act (PECA) 2016, which may include filing a complaint, seeking injunctions and damages in civil courts, and invoking constitutional privacy protections.\n\nIn the context of divorce, the law does not explicitly state who has the right to personal data. However, the Pakistan Electronic Crimes Act 2016 and the Qanun-e-Shahadat Ordinance 1962 [Source: Qanun-e-Shahadat Ordinance 1962] may be relevant.\n\nTo prevent unauthorized disclosure, it is essential to review your divorce agreement or court orders to understand the parties' rights and obligations regarding personal data. If you suspect unauthorized disclosure, consult with a legal professional to determine the best course of action."
+    },
+    {
+      "question": "As a doctor, can I reveal what my patient told me in confidence?",
+      "answered": true,
+      "answer": "I'm not aware of the laws regarding patient confidentiality in Pakistan. Could you please clarify or provide more context about what you're asking? That way, I can better assist you with your specific question."
+    },
+    {
+      "question": "Can the President or Governor be criminally prosecuted during their term?",
+      "answered": true,
+      "answer": "Based on the retrieved laws, it appears that there are no direct provisions that explicitly state whether the President or Governor can be criminally prosecuted during their term. However, the laws do provide some insight.\n\nThe Pakistan Penal Code (1860) mentions various crimes that can be committed against the President, Governor, or other government officials, such as assault or sedition. However, these provisions do not directly address the question of whether the President or Governor can be prosecuted during their term.\n\nThe Qanun-e-Shahadat (Order of 1984) provides that no one shall be permitted to give evidence as to affairs of State, which may imply that certain actions or decisions taken by the President or Governor may be considered as part of their official duties and therefore not subject to criminal prosecution. However, this provision is not directly applicable to the question at hand.\n\nTherefore, based on the retrieved laws, it appears that there is no clear answer to whether the President or Governor can be criminally prosecuted during their term."
+    },
+    {
+      "question": "Does Pakistani law treat men and women equally under the Constitution?",
+      "answered": true,
+      "answer": "Based on the retrieved documents, Pakistani law does treat men and women equally under certain aspects of the Constitution. For instance, the Human Rights Commission of Pakistan Act, 2012 establishes a commission to protect and promote human rights in Pakistan, emphasizing the importance of equality and justice. Additionally, the Constitution of Pakistan does not explicitly distinguish between the rights of men and women.\n\nHowever, the Pakistan Penal Code, 1860 (as amended), and various other laws suggest that some provisions may have been influenced by traditional social norms, which may not always reflect equal treatment. Nevertheless, the Constitution and other laws aim to promote equality and justice for all citizens.\n\nIt is worth noting that the Constitution of Pakistan is a comprehensive document that guarantees equal rights to all citizens, regardless of gender. Article 14 of the Constitution states that all citizens are equal before the law and are entitled to equal protection of the law (Constitution of Pakistan.pdf)."
+    },
+    {
+      "question": "Is an accomplice still allowed to testify in court in Pakistan?",
+      "answered": true,
+      "answer": "Based on the retrieved documents, an accomplice is allowed to testify in court in Pakistan, except in cases of offenses punishable with hadd. This means that an accomplice can serve as a witness against an accused person in most cases, but there are some exceptions.\n\nFor example, if the offense is punishable with hadd (a form of punishment prescribed under Islamic law), the accomplice may not be considered a competent witness. However, this exception is not clearly defined in the retrieved documents, and further clarification would be necessary to understand its scope.\n\nIt's worth noting that the Supreme Court of Pakistan has the authority to interpret the law and provide guidance on its application."
+    },
+    {
+      "question": "What does PECA say about unauthorized access to someone's data?",
+      "answered": true,
+      "answer": "Based on the retrieved laws, it appears that unauthorized access to someone's data is prohibited under PECA 2016. The law prescribes a punishment of imprisonment for up to six months or a fine for those who gain unauthorized access to critical infrastructure information systems or data. Additionally, remedies for unauthorized disclosure of personal data include filing a complaint under PECA 2016, seeking injunctions and damages in civil courts, and invoking constitutional privacy protections."
+    },
+    {
+      "question": "If a company employee steals internal files, what legal trouble can they face?",
+      "answered": true,
+      "answer": "Based on the retrieved documents, if a company employee steals internal files, they can face legal trouble under the Pakistan Penal Code. Section 228 deals with defamation and false statements, and if the employee steals files that contain false information, they can be charged under this section. Additionally, Section 506 of the Pakistan Penal Code deals with criminal intimidation, and if the employee steals files and threatens the company with injury to their person, property, or reputation, they can be punished with imprisonment.\n\nThe employee can also be charged under the [Source: PEC2016.pdf] Act, which deals with cybercrime. The Act states that any offence under this Act and affects a person, property, information system or data located in Pakistan can be punished. However, the Act does not specify the punishment for stealing internal company files.\n\nIt is essential to note that the consequences of stealing internal company files can also lead to civil consequences, such as termination of employment and potential lawsuits."
+    },
+    {
+      "question": "Is there anything in your documents about Companies Amendment Act 2021?",
+      "answered": true,
+      "answer": "Based on the retrieved documents, it appears that the Companies Amendment Act 2021 is a real piece of legislation in Pakistan, but the available documents do not provide a comprehensive overview of the Act.\n\nHowever, it can be inferred that the Act likely made some amendments to the Companies Act, 2017. The documents mention alterations in the fourth and fifth schedules of the Companies Act, 2017, and references to sections 42 and 167 of the Act.\n\nSpecifically, the Companies Amendment Act 2021 may have addressed issues related to the powers and duties of company directors (Section 42), compulsory acquisition of shares (Section 167), and other potential changes to the Companies Act, 2017.\n\nHowever, without further information, it is not possible to provide a detailed analysis of the changes made by the Act."
+    },
+    {
+      "question": "Do your PDFs include NBFC regulation amendment notifications?",
+      "answered": true,
+      "answer": "Yes, my PDFs include NBFC regulation amendment notifications. The retrieved document is the Draft Notification - amendments in NBFC Regulations 2008, which proposes amendments to the Non-Banking Finance Companies and Notified Entities Regulations, 2008, dated 2020. \n\nHowever, please note that this document is a draft and may not be the latest version. For the most up-to-date information, I recommend verifying with the relevant regulatory body."
+    },
+    {
+      "question": "Do your docs mention the 4th and 5th schedule amendments?",
+      "answered": true,
+      "answer": "Based on the retrieved document, the 4th Schedule was amended vide S.R.O. 1169 (l)/2017 dated November 7th, 2017, and S.R.O. 888 (I)/2019 dated July 29th, 2019. However, I couldn't find any information on the 5th Schedule amendment in the provided documents.\n\nCould you please provide more context or specify which 5th Schedule amendment you are referring to? I'll do my best to assist you based on the available information."
+    },
+    {
+      "question": "What is the sales tax percentage generally mentioned in Pakistan law?",
+      "answered": true,
+      "answer": "Unfortunately, my initial search didn't yield any relevant results for sales tax. Let me try again with a more specific query.\n\n<function=search_pakistan_law>{\"query\": \"sales tax rates in Pakistan laws, including the Sales Tax Act 1990 and the Federal Excise Act 2005\"}</function>"
+    },
+    {
+      "question": "If my privacy is violated, what remedies can I seek in Pakistan?",
+      "answered": true,
+      "answer": "Based on the retrieved laws, if your privacy is violated in Pakistan, you can seek remedies by filing a complaint under the Prevention of Electronic Crimes Act 2016 (PECA 2016), seeking injunctions and damages in civil courts, and invoking constitutional privacy protections. You can also report defamation and false statements under the Pakistan Penal Code, sections 228 and 499, which may lead to imprisonment and fines.\n\nPlease note that the remedies available to you may depend on the specific circumstances of your case, and it is recommended that you consult with a legal professional for personalized advice."
+    }
+  ]
+}

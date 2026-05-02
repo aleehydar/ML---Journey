@@ -23,7 +23,7 @@ import sys
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from embedding_provider import build_embeddings
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 VECTORSTORE_DIR = os.path.join(os.path.dirname(__file__), "vectorstore")
@@ -56,9 +56,25 @@ def ingest():
         loader = PyMuPDFLoader(pdf_path)
         pages = loader.load()
         
-        # Each page gets metadata with source filename + page number
+        import hashlib
+        import re
+        from datetime import datetime
+
+        # Each page gets provenance metadata and normalized text
         for page in pages:
+            # 1. Normalize OCR text
+            raw_text = page.page_content
+            # Replace multiple whitespace/newlines with formatted spacing
+            clean_text = re.sub(r'\s+', ' ', raw_text).strip()
+            page.page_content = clean_text
+            
+            # 2. Add Provenance Metadata
+            page_text_hash = hashlib.sha256(clean_text.encode("utf-8")).hexdigest()
             page.metadata["source"] = f"{pdf_file} - Page {page.metadata.get('page', 0) + 1}"
+            page.metadata["checksum"] = page_text_hash
+            page.metadata["effective_date"] = datetime.now().isoformat()
+            page.metadata["source_url"] = f"local://{pdf_file}"
+            page.metadata["parser_version"] = "PyMuPDFLoader-v1.0"
         
         all_docs.extend(pages)
         print(f"   Extracted {len(pages)} pages")
@@ -76,7 +92,7 @@ def ingest():
     
     # Step 4: Embed and create FAISS index
     print("🧠 Embedding chunks with all-MiniLM-L6-v2...")
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    embeddings = build_embeddings("all-MiniLM-L6-v2")
     vectorstore = FAISS.from_documents(chunks, embeddings)
     
     # Step 5: Save to disk

@@ -1,0 +1,282 @@
+{
+  "timestamp": "2026-04-16T21:20:36.073630+00:00",
+  "total_questions": 25,
+  "answerable_count": 25,
+  "not_answerable_count": 0,
+  "coverage_percent": 100.0,
+  "results": [
+    {
+      "id": 1,
+      "question": "What does Article 9 of the Constitution of Pakistan protect?",
+      "answerable": true,
+      "top_sources": [
+        "Privacy Remedies - Pakistan",
+        "Pakistan_ang_010117.pdf",
+        "Constitution of Pakistan.pdf"
+      ],
+      "match_score": 3
+    },
+    {
+      "id": 2,
+      "question": "What does Article 10 say about arrest safeguards?",
+      "answerable": true,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Pakistan_ang_010117.pdf",
+        "Constitution of Pakistan.pdf"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 3,
+      "question": "What rights are guaranteed under Article 25?",
+      "answerable": true,
+      "top_sources": [
+        "Constitution of Pakistan.pdf",
+        "Pakistan_ang_010117.pdf",
+        "PEC2016.pdf"
+      ],
+      "match_score": 3
+    },
+    {
+      "id": 4,
+      "question": "What immunity does Article 248 provide to the President?",
+      "answerable": true,
+      "top_sources": [
+        "Pakistan_ang_010117.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf",
+        "Constitution of Pakistan.pdf"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 5,
+      "question": "Is an accomplice a competent witness?",
+      "answerable": true,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "PEC2016.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf"
+      ],
+      "match_score": 3
+    },
+    {
+      "id": 6,
+      "question": "When is professional communication privileged under Qanun-e-Shahadat?",
+      "answerable": true,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "PEC2016.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf"
+      ],
+      "match_score": 5
+    },
+    {
+      "id": 7,
+      "question": "Can a landlord evict a tenant immediately?",
+      "answerable": true,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Financial-institutions-Act-2016-updated.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf"
+      ],
+      "match_score": 3
+    },
+    {
+      "id": 8,
+      "question": "What is the minimum wage in Pakistan in 2024?",
+      "answerable": true,
+      "top_sources": [
+        "Labor Law - Minimum Wage 2024",
+        "qanun-e-shahadat-order-1984.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf"
+      ],
+      "match_score": 3
+    },
+    {
+      "id": 9,
+      "question": "What are maximum daily and weekly working hours?",
+      "answerable": true,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Pakistan_ang_010117.pdf",
+        "PEC2016.pdf"
+      ],
+      "match_score": 2
+    },
+    {
+      "id": 10,
+      "question": "How many annual leave days are granted after one year of service?",
+      "answerable": true,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Labor Law - Annual Leave",
+        "qanun-e-shahadat-order-1984.pdf"
+      ],
+      "match_score": 7
+    },
+    {
+      "id": 11,
+      "question": "What is the sales tax rate in Pakistan?",
+      "answerable": true,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "4th and 5th Schedule- Amended.pdf",
+        "Pakistan_ang_010117.pdf"
+      ],
+      "match_score": 3
+    },
+    {
+      "id": 12,
+      "question": "How is tax computed for annual income of PKR 700,000?",
+      "answerable": true,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Pakistan_ang_010117.pdf",
+        "Constitution of Pakistan.pdf"
+      ],
+      "match_score": 5
+    },
+    {
+      "id": 13,
+      "question": "What penalties apply for unauthorized access under PECA 2016?",
+      "answerable": true,
+      "top_sources": [
+        "PEC2016.pdf",
+        "Privacy Remedies - Pakistan",
+        "Prevention of Electronic Crimes Act, 2016 - Section 20"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 14,
+      "question": "Is sharing ex-spouse personal data without consent lawful?",
+      "answerable": true,
+      "top_sources": [
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf",
+        "qanun-e-shahadat-order-1984.pdf",
+        "PEC2016.pdf"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 15,
+      "question": "What confidentiality protections exist in Family Courts Act Section 7?",
+      "answerable": true,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Pakistan_ang_010117.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 16,
+      "question": "What does the Companies Amendment Act 2021 change?",
+      "answerable": true,
+      "top_sources": [
+        "Financial-institutions-Act-2016-updated.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Companies-Amendment-Act-2021-gazette-copy.pdf"
+      ],
+      "match_score": 5
+    },
+    {
+      "id": 17,
+      "question": "What is covered in 4th and 5th Schedule amendments?",
+      "answerable": true,
+      "top_sources": [
+        "Pakistan_ang_010117.pdf",
+        "Financial-institutions-Act-2016-updated.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 18,
+      "question": "What does the Financial Institutions Act 2016 regulate?",
+      "answerable": true,
+      "top_sources": [
+        "Financial-institutions-Act-2016-updated.pdf",
+        "Pakistan_ang_010117.pdf",
+        "Constitution of Pakistan.pdf"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 19,
+      "question": "Does Pakistan Penal Code address cyber-related crimes?",
+      "answerable": true,
+      "top_sources": [
+        "PEC2016.pdf",
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Companies-Amendment-Act-2021-gazette-copy.pdf"
+      ],
+      "match_score": 5
+    },
+    {
+      "id": 20,
+      "question": "What does PECA Section 16 criminalize?",
+      "answerable": true,
+      "top_sources": [
+        "Prevention of Electronic Crimes Act, 2016 - Section 21",
+        "Pakistan Penal Code - Section 499",
+        "Transfer of Property Act, 1882 - Section 54"
+      ],
+      "match_score": 2
+    },
+    {
+      "id": 21,
+      "question": "What are legal remedies for privacy breaches in Pakistan?",
+      "answerable": true,
+      "top_sources": [
+        "Privacy Remedies - Pakistan"
+      ],
+      "match_score": 2
+    },
+    {
+      "id": 22,
+      "question": "What does Constitution Article 14 say about privacy?",
+      "answerable": true,
+      "top_sources": [
+        "qanun-e-shahadat-order-1984.pdf",
+        "Privacy Remedies - Pakistan",
+        "Pakistan_ang_010117.pdf"
+      ],
+      "match_score": 3
+    },
+    {
+      "id": 23,
+      "question": "Is unauthorized copying of corporate data punishable?",
+      "answerable": true,
+      "top_sources": [
+        "PEC2016.pdf",
+        "Companies-Amendment-Act-2021-gazette-copy.pdf",
+        "Privacy Remedies - Pakistan"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 24,
+      "question": "Do the uploaded PDFs include NBFC Regulation amendments?",
+      "answerable": true,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Pakistan_ang_010117.pdf",
+        "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf"
+      ],
+      "match_score": 4
+    },
+    {
+      "id": 25,
+      "question": "Do the uploaded PDFs include sugar companies notification changes?",
+      "answerable": true,
+      "top_sources": [
+        "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+        "Notification-PIC-addition-of-sugar-companies-in-3-sch_.pdf",
+        "Financial-institutions-Act-2016-updated.pdf"
+      ],
+      "match_score": 4
+    }
+  ]
+}

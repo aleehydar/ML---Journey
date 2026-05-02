@@ -1,0 +1,271 @@
+{
+  "timestamp": "2026-04-16T21:37:52.104715+00:00",
+  "pdf_count": 11,
+  "pdfs_retrieved_at_least_once": 8,
+  "retrieval_coverage_percent": 72.73,
+  "results": [
+    {
+      "pdf": "4th and 5th Schedule- Amended.pdf",
+      "hits": 2,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "What updates are mentioned in the 4th and 5th schedules amendment document?",
+          "hit": true,
+          "retrieved_sources": [
+            "4th and 5th Schedule- Amended.pdf"
+          ]
+        },
+        {
+          "question": "Does the amended 4th/5th schedule document discuss tax or corporate schedule changes?",
+          "hit": true,
+          "retrieved_sources": [
+            "4th and 5th Schedule- Amended.pdf",
+            "Alterations in the fourth and fifth schedules of the Companies Act, 2017.pdf",
+            "Notification-PIC-addition-of-sugar-companies-in-3-sch_.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "Alterations in the fourth and fifth schedules of the Companies Act, 2017.pdf",
+      "hits": 2,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "What alterations are described for the fourth and fifth schedules of Companies Act 2017?",
+          "hit": true,
+          "retrieved_sources": [
+            "4th and 5th Schedule- Amended.pdf",
+            "Alterations in the fourth and fifth schedules of the Companies Act, 2017.pdf",
+            "Companies Act, 2017 - Section 42",
+            "Notification-PIC-addition-of-sugar-companies-in-3-sch_.pdf"
+          ]
+        },
+        {
+          "question": "Do your documents mention changes to Companies Act 2017 schedules?",
+          "hit": true,
+          "retrieved_sources": [
+            "4th and 5th Schedule- Amended.pdf",
+            "Alterations in the fourth and fifth schedules of the Companies Act, 2017.pdf",
+            "Companies Act, 2017 - Section 42",
+            "Notification-PIC-addition-of-sugar-companies-in-3-sch_.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "Companies-Amendment-Act-2021-gazette-copy.pdf",
+      "hits": 2,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "What key changes are included in Companies Amendment Act 2021 gazette?",
+          "hit": true,
+          "retrieved_sources": [
+            "4th and 5th Schedule- Amended.pdf",
+            "Companies-Amendment-Act-2021-gazette-copy.pdf",
+            "Financial-institutions-Act-2016-updated.pdf"
+          ]
+        },
+        {
+          "question": "Is there any mention of Companies Amendment Act 2021 in your legal PDFs?",
+          "hit": true,
+          "retrieved_sources": [
+            "Alterations in the fourth and fifth schedules of the Companies Act, 2017.pdf",
+            "Companies Act, 2017 - Section 167",
+            "Companies-Amendment-Act-2021-gazette-copy.pdf",
+            "Financial-institutions-Act-2016-updated.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "Constitution of Pakistan.pdf",
+      "hits": 0,
+      "total_probes": 2,
+      "pass": false,
+      "details": [
+        {
+          "question": "What rights are protected by Article 9 and Article 25 of the Constitution?",
+          "hit": false,
+          "retrieved_sources": [
+            "Privacy Remedies - Pakistan"
+          ]
+        },
+        {
+          "question": "Does the Constitution mention equality before law and personal liberty?",
+          "hit": false,
+          "retrieved_sources": []
+        }
+      ]
+    },
+    {
+      "pdf": "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+      "hits": 1,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "What amendments are proposed in NBFC Regulations 2008 draft notification?",
+          "hit": true,
+          "retrieved_sources": [
+            "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf"
+          ]
+        },
+        {
+          "question": "Do your files include draft NBFC regulation amendment details?",
+          "hit": false,
+          "retrieved_sources": []
+        }
+      ]
+    },
+    {
+      "pdf": "Financial-institutions-Act-2016-updated.pdf",
+      "hits": 2,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "What is regulated under the Financial Institutions Act 2016?",
+          "hit": true,
+          "retrieved_sources": [
+            "Financial-institutions-Act-2016-updated.pdf"
+          ]
+        },
+        {
+          "question": "Do your documents discuss financial institutions legal framework in 2016?",
+          "hit": true,
+          "retrieved_sources": [
+            "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf",
+            "Financial-institutions-Act-2016-updated.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "Notification-PIC-addition-of-sugar-companies-in-3-sch_.pdf",
+      "hits": 0,
+      "total_probes": 2,
+      "pass": false,
+      "details": [
+        {
+          "question": "Is there a notification about adding sugar companies in third schedule?",
+          "hit": false,
+          "retrieved_sources": []
+        },
+        {
+          "question": "What does the PIC sugar companies schedule notification say?",
+          "hit": false,
+          "retrieved_sources": [
+            "Draft-Notification-amendments-in-NBFC-Regulations-2008.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "PEC2016.pdf",
+      "hits": 1,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "What does PECA 2016 say about unauthorized access to personal data?",
+          "hit": true,
+          "retrieved_sources": [
+            "PEC2016.pdf",
+            "Prevention of Electronic Crimes Act, 2016 - Section 20",
+            "Privacy Remedies - Pakistan"
+          ]
+        },
+        {
+          "question": "Are there criminal penalties in PECA for cyber offenses?",
+          "hit": false,
+          "retrieved_sources": [
+            "Prevention of Electronic Crimes Act, 2016 - Section 20",
+            "Prevention of Electronic Crimes Act, 2016 - Section 21",
+            "Privacy Remedies - Pakistan"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf",
+      "hits": 1,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "Does Pakistan Penal Code include punishments for criminal intimidation or cyber-linked crimes?",
+          "hit": false,
+          "retrieved_sources": [
+            "PEC2016.pdf",
+            "Pakistan Penal Code - Section 228",
+            "Pakistan Penal Code - Section 499",
+            "Pakistan Penal Code - Section 506"
+          ]
+        },
+        {
+          "question": "What kinds of offenses are covered in Pakistan Penal Code amendments up to 2017?",
+          "hit": true,
+          "retrieved_sources": [
+            "Pakistan Penal Code - Section 228",
+            "Pakistan Penal Code - Section 499",
+            "Pakistan Penal Code - Section 506",
+            "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "Pakistan_ang_010117.pdf",
+      "hits": 0,
+      "total_probes": 2,
+      "pass": false,
+      "details": [
+        {
+          "question": "What constitutional immunity is available to President or Governor during term?",
+          "hit": false,
+          "retrieved_sources": [
+            "Constitution of Pakistan.pdf",
+            "Pakistan_Penal_Code_1860_incorporating_amendments_to_16_February_2017.pdf"
+          ]
+        },
+        {
+          "question": "What does Pakistan constitutional text say about arrest safeguards?",
+          "hit": false,
+          "retrieved_sources": [
+            "Constitution of Pakistan.pdf",
+            "Pakistan Penal Code - Section 228",
+            "Pakistan Penal Code - Section 506"
+          ]
+        }
+      ]
+    },
+    {
+      "pdf": "qanun-e-shahadat-order-1984.pdf",
+      "hits": 1,
+      "total_probes": 2,
+      "pass": true,
+      "details": [
+        {
+          "question": "Is an accomplice competent as a witness under Qanun-e-Shahadat?",
+          "hit": true,
+          "retrieved_sources": [
+            "qanun-e-shahadat-order-1984.pdf"
+          ]
+        },
+        {
+          "question": "What does Qanun-e-Shahadat say about privileged communications?",
+          "hit": false,
+          "retrieved_sources": [
+            "Qanun-e-Shahadat - Professional Communication Privilege"
+          ]
+        }
+      ]
+    }
+  ]
+}

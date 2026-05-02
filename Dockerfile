@@ -11,20 +11,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install dependencies
+# Copy requirements and install dependencies globally
 COPY requirements-docker.txt .
-RUN pip install --no-cache-dir --user -r requirements-docker.txt
+RUN pip install --no-cache-dir -r requirements-docker.txt
 
 # Stage 2: Production
 FROM python:3.12-slim
 
 WORKDIR /app
 
-# Copy installed packages from builder
-COPY --from=builder /root/.local /root/.local
-
-# Ensure scripts in .local are usable
-ENV PATH=/root/.local/bin:$PATH
+# Copy installed packages from builder (global install)
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
 
 # Copy application code
 COPY app/ ./app/
