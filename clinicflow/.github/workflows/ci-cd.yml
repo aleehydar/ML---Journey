@@ -70,19 +70,13 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Pull the latest image
             docker pull aleehydar/clinicflow-api:latest
-            
-            # Stop the existing clinicflow container if it exists
-            docker stop clinicflow_api || true
-            docker rm clinicflow_api || true
-            
-            # Run the new container on port 8001
-            docker run -d \
-              --name clinicflow_api \
-              -p 8001:8001 \
-              --restart unless-stopped \
+            docker stop clinicflow-api || true
+            docker rm clinicflow-api || true
+            docker run -d -p 8001:8001 --restart always --name clinicflow-api \
+              -e TRANSFORMERS_CACHE=/tmp/hf_cache \
+              -e HF_HOME=/tmp/hf_cache \
               aleehydar/clinicflow-api:latest
-              
+            
             # Clean up old images
             docker image prune -f
