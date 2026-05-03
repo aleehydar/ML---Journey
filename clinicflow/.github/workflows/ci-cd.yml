@@ -75,8 +75,7 @@ jobs:
             docker stop clinicflow-api || true
             docker rm clinicflow-api || true
             docker run -d -p 8001:8001 --restart always --name clinicflow-api \
-              -e TRANSFORMERS_CACHE=/tmp/hf_cache \
-              -e HF_HOME=/tmp/hf_cache \
+              -e HF_TOKEN=${{ secrets.HF_TOKEN }} \
               aleehydar/clinicflow-api:latest
             
             # Clean up old images

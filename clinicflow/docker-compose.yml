@@ -9,7 +9,6 @@ services:
       - "8001:8001"
     environment:
       - PYTHONUNBUFFERED=1
-      - TRANSFORMERS_CACHE=/tmp/hf_cache
-      - HF_HOME=/tmp/hf_cache
+      - HF_TOKEN=${HF_TOKEN}
     restart: unless-stopped
     # Note: the existing attrition API is assumed to be running independently on port 8000.
