@@ -7,3 +7,6 @@ deep_learning/data/
 model/*.pkl
 model/*.json
 *.zip
+bizscout/.venv/
+bizscout/__pycache__/
+bizscout/.env
