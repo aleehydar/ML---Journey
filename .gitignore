@@ -1,12 +1,13 @@
-venv/
+# Environments (Catch-all for root and subfolders)
 .env
+*venv/
+
+# Python & Testing Caches
 __pycache__/
 *.pyc
-deep_learning/data/
 .pytest_cache/
-model/*.pkl
-model/*.json
+
+# Data & Large Assets (Global rules)
 *.zip
-bizscout/.venv/
-bizscout/__pycache__/
-bizscout/.env
+*.csv
+*.png
