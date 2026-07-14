@@ -12,11 +12,8 @@ from sentence_transformers import CrossEncoder
 
 from embedding_provider import build_embeddings
 
-try:
-    from rank_bm25 import BM25Okapi  # type: ignore
-except Exception:
-    BM25Okapi = None
-
+import time
+from abc import ABC, abstractmethod
 
 @dataclass
 class RetrievalChunk:
@@ -30,6 +27,37 @@ class RetrievalChunk:
 class RetrievalResult:
     chunks: List[RetrievalChunk]
     top_score: float
+    hyde_doc: Optional[str] = None
+
+
+class SparseRetriever(ABC):
+    @abstractmethod
+    def get_top_k(self, query: str, k: int) -> List[Document]:
+        pass
+
+class RankBM25Retriever(SparseRetriever):
+    def __init__(self, docs: List[Document]):
+        from rank_bm25 import BM25Okapi
+        self.docs = docs
+        tokenized = [self._tokenize(d.page_content) for d in docs]
+        self.bm25 = BM25Okapi(tokenized)
+
+    def _tokenize(self, text: str) -> List[str]:
+        return re.findall(r"[a-zA-Z0-9]+", text.lower())
+
+    def get_top_k(self, query: str, k: int) -> List[Document]:
+        q_tokens = self._tokenize(query)
+        scores = self.bm25.get_scores(q_tokens)
+        ranked = sorted(zip(scores, self.docs), key=lambda x: x[0], reverse=True)
+        return [doc for score, doc in ranked[:k]]
+
+class QdrantSparseRetriever(SparseRetriever):
+    def __init__(self, docs: List[Document]):
+        # Placeholder for future Qdrant/Elasticsearch sparse backend
+        pass
+
+    def get_top_k(self, query: str, k: int) -> List[Document]:
+        return []
 
 
 class RetrievalService:
@@ -45,8 +73,18 @@ class RetrievalService:
         except Exception:
             self.intent_llm = None
         self.legal_texts = self._load_legal_texts()
+        
+        t0 = time.time()
         self.vectorstore = self._load_or_build_vectorstore()
-        self.bm25, self.chunk_docs = self._build_bm25_index()
+        
+        # Ensure we can safely check index size regardless of FAISS version
+        ntotal = getattr(self.vectorstore.index, "ntotal", "unknown") if hasattr(self.vectorstore, "index") else "unknown"
+        print(f"FAISS index loaded in {time.time()-t0:.2f}s with {ntotal} chunks")
+        
+        self.chunk_docs = self._chunk_documents()
+        t1 = time.time()
+        self.sparse_retriever = RankBM25Retriever(self.chunk_docs)
+        print(f"BM25 index built in {time.time()-t1:.2f}s for {len(self.chunk_docs)} chunks")
 
     def _load_legal_texts(self) -> List[Dict]:
         if not os.path.exists(self.legal_texts_file):
@@ -89,29 +127,34 @@ class RetrievalService:
         store.save_local(self.vectorstore_dir)
         return store
 
-    def _build_bm25_index(self):
-        chunk_docs = self._chunk_documents()
-        tokenized = [self._tokenize(d.page_content) for d in chunk_docs]
-        if BM25Okapi is None:
-            return None, chunk_docs
-        return BM25Okapi(tokenized), chunk_docs
-
     def _tokenize(self, text: str) -> List[str]:
         return re.findall(r"[a-zA-Z0-9]+", text.lower())
+
+    def generate_hypothetical_document(self, query: str) -> str:
+        prompt = f"Write a short passage (2-4 sentences) that would answer this legal question as if it appeared in the Pakistani Constitution or relevant statute: {query}"
+        try:
+            if self.intent_llm:
+                return self.intent_llm.invoke(prompt).content.strip()
+        except Exception as e:
+            print(f"HyDE generation failed: {e}")
+        return query
 
     def _extract_intent_filters(self, query: str) -> Dict[str, Optional[str]]:
         if self.intent_llm is None:
             q = query.lower()
+            article_match = re.search(r"\barticle\s+(\d+[A-Za-z]*)\b", q)
             return {
                 "law_family": "companies" if "companies" in q else None,
                 "year": re.search(r"\b(19|20)\d{2}\b", q).group(0)
                 if re.search(r"\b(19|20)\d{2}\b", q)
                 else None,
                 "document_type": "notification" if "notification" in q else None,
+                "article": article_match.group(1) if article_match else None,
             }
         prompt = f"""
 Extract retrieval filters from this user query.
-Return ONLY JSON with keys: law_family, year, document_type.
+Return ONLY JSON with keys: law_family, year, document_type, article.
+For article, extract only the number/identifier (e.g. "14" or "2A").
 If unknown set null.
 
 Query: {query}
@@ -121,15 +164,22 @@ JSON:
             raw = self.intent_llm.invoke(prompt).content
             match = re.search(r"\{.*\}", raw, re.DOTALL)
             if not match:
-                return {"law_family": None, "year": None, "document_type": None}
+                return {"law_family": None, "year": None, "document_type": None, "article": None}
             parsed = json.loads(match.group(0))
+            
+            def _clean(val):
+                if val is None: return None
+                if str(val).lower().strip() in ["null", "none", "unknown", ""]: return None
+                return str(val)
+
             return {
-                "law_family": parsed.get("law_family"),
-                "year": str(parsed.get("year")) if parsed.get("year") else None,
-                "document_type": parsed.get("document_type"),
+                "law_family": _clean(parsed.get("law_family")),
+                "year": _clean(parsed.get("year")),
+                "document_type": _clean(parsed.get("document_type")),
+                "article": _clean(parsed.get("article")),
             }
         except Exception:
-            return {"law_family": None, "year": None, "document_type": None}
+            return {"law_family": None, "year": None, "document_type": None, "article": None}
 
     def _doc_matches_filters(self, doc: Document, filters: Dict[str, Optional[str]]) -> bool:
         source = str(doc.metadata.get("source", "")).lower()
@@ -141,44 +191,51 @@ JSON:
             return False
         return True
 
-    def _hybrid_candidates(self, query: str, org_id: str, filters: Dict[str, Optional[str]]) -> List[Document]:
-        # Dense candidates
-        dense = self.vectorstore.similarity_search_with_score(query, k=30)
+    def _hybrid_candidates(self, query: str, hyde_doc: Optional[str], org_id: str, filters: Dict[str, Optional[str]]) -> List[Document]:
+        print(f"\n--- DIAGNOSTICS: RETRIEVAL TRACE ---")
+        print(f"Raw Query: {query}")
+        print(f"Extracted Filters: {filters}")
+        
+        # Dense candidates (Union of raw query and HyDE if present)
         dense_docs = []
-        for doc, _score in dense:
-            if doc.metadata.get("organization_id", "public") != org_id:
-                continue
-            if not self._doc_matches_filters(doc, filters):
-                continue
-            dense_docs.append(doc)
+        raw_dense = self.vectorstore.similarity_search_with_score(query, k=30)
+        for doc, _ in raw_dense:
+            if doc.metadata.get("organization_id", "public") == org_id:
+                dense_docs.append(doc)
+                
+        if hyde_doc:
+            hyde_dense = self.vectorstore.similarity_search_with_score(hyde_doc, k=30)
+            for doc, _ in hyde_dense:
+                if doc.metadata.get("organization_id", "public") == org_id:
+                    dense_docs.append(doc)
+            
+        print(f"FAISS Candidates Retrieved: {len(dense_docs)}")
 
         # BM25 candidates
-        q_tokens = self._tokenize(query)
-        if self.bm25 is not None:
-            bm25_scores = self.bm25.get_scores(q_tokens)
-            bm25_ranked = sorted(
-                zip(bm25_scores, self.chunk_docs), key=lambda x: x[0], reverse=True
-            )[:30]
-        else:
-            # Fallback lexical scorer: token overlap count.
-            bm25_ranked = []
-            q_set = set(q_tokens)
-            for doc in self.chunk_docs:
-                score = len(q_set.intersection(set(self._tokenize(doc.page_content))))
-                bm25_ranked.append((score, doc))
-            bm25_ranked = sorted(bm25_ranked, key=lambda x: x[0], reverse=True)[:30]
+        bm25_raw_docs = self.sparse_retriever.get_top_k(query, k=30)
         bm25_docs = []
-        for _score, doc in bm25_ranked:
-            if doc.metadata.get("organization_id", "public") != org_id:
-                continue
-            if not self._doc_matches_filters(doc, filters):
-                continue
-            bm25_docs.append(doc)
+        for doc in bm25_raw_docs:
+            if doc.metadata.get("organization_id", "public") == org_id:
+                bm25_docs.append(doc)
+            
+        print(f"BM25 Candidates Retrieved: {len(bm25_docs)}")
+        
+        # Exact Article Injection
+        exact_article_docs = []
+        article_filter = filters.get("article")
+        if article_filter:
+            # Look for exact article number in chunks, e.g., "Article 14" or "14. "
+            article_pattern = re.compile(rf"\barticle\s+{article_filter}\b|\b{article_filter}\.\s+", re.IGNORECASE)
+            for doc in self.chunk_docs:
+                if doc.metadata.get("organization_id", "public") == org_id:
+                    if article_pattern.search(doc.page_content):
+                        exact_article_docs.append(doc)
+            print(f"Exact Article Candidates Injected: {len(exact_article_docs)}")
 
         # union by (source,text)
         seen = set()
         merged = []
-        for doc in dense_docs + bm25_docs:
+        for doc in dense_docs + bm25_docs + exact_article_docs:
             key = (doc.metadata.get("source", ""), doc.page_content[:120])
             if key in seen:
                 continue
@@ -187,14 +244,29 @@ JSON:
         return merged
 
     def retrieve(self, query: str, org_id: str, k: int = 6) -> RetrievalResult:
+        use_hyde = os.getenv("USE_HYDE", "true").lower() == "true"
+        hyde_doc = None
+        if use_hyde:
+            hyde_doc = self.generate_hypothetical_document(query)
+            # Sanity check for hallucinated hedging language
+            hedge_words = ["i couldn't find", "unfortunately", "i don't have", "i do not have", "i cannot", "unknown", "no information"]
+            if hyde_doc and any(hw in hyde_doc.lower() for hw in hedge_words):
+                print(f"Skipping HyDE due to hedging language: {hyde_doc[:50]}...")
+                hyde_doc = None
+            
         filters = self._extract_intent_filters(query)
-        candidates = self._hybrid_candidates(query, org_id=org_id, filters=filters)
+        candidates = self._hybrid_candidates(query, hyde_doc, org_id=org_id, filters=filters)
         if not candidates:
-            return RetrievalResult(chunks=[], top_score=0.0)
+            return RetrievalResult(chunks=[], top_score=0.0, hyde_doc=hyde_doc)
 
         pairs = [[query, doc.page_content] for doc in candidates]
         scores = self.cross_encoder.predict(pairs)
         ranked = sorted(zip(scores, candidates), key=lambda x: x[0], reverse=True)
+        
+        print(f"Total Unique Candidates for Reranking: {len(candidates)}")
+        print(f"Top 5 CrossEncoder Scores:")
+        for i, (score, doc) in enumerate(ranked[:5]):
+            print(f"  {i+1}. Score: {score:.2f} | Source: {doc.metadata.get('source', 'unknown')}")
         
         # Adaptive retrieval depth
         dynamic_k = k
@@ -220,7 +292,7 @@ JSON:
         top = chunks[0].score if chunks else 0.0
         # normalize cross-encoder style score to 0..1 usable confidence
         normalized_top = 1.0 / (1.0 + pow(2.71828, -top))
-        return RetrievalResult(chunks=chunks, top_score=normalized_top)
+        return RetrievalResult(chunks=chunks, top_score=normalized_top, hyde_doc=hyde_doc)
 
     def get_documents_for_org(self, org_id: str) -> Dict[str, str]:
         rows = {}

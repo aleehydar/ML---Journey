@@ -28,7 +28,9 @@ sentence-transformers, CrossEncoder, Docker, Uvicorn
 
 ## Run locally
 ```bash
+# Add USE_HYDE=true to your .env to enable Hypothetical Document Embeddings
 pip install -r requirements.txt
+
 uvicorn app:app --reload --port 8000
 ```
 

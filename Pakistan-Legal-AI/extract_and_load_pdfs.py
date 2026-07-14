@@ -3,7 +3,7 @@
 
 import os
 import json
-import PyPDF2
+from langchain_community.document_loaders import PyMuPDFLoader
 
 data_dir = "/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/data"
 output_file = "/home/ali-haidar/Desktop/ML-Journey/Pakistan-Legal-AI/legal_texts.json"
@@ -31,26 +31,42 @@ for pdf_file in pdf_files:
     print(f"📖 Extracting: {pdf_file}...")
     
     try:
-        with open(pdf_path, 'rb') as f:
-            reader = PyPDF2.PdfReader(f)
-            text = ""
-            for i, page in enumerate(reader.pages):
-                try:
-                    page_text = page.extract_text()
-                    if page_text:
-                        text += page_text + "\n"
-                except:
-                    pass
+        loader = PyMuPDFLoader(pdf_path)
+        pages = loader.load()
+        text = ""
+        for page in pages:
+            try:
+                page_text = page.page_content
+                if page_text:
+                    import re
+                    clean_text = re.sub(r'\s+', ' ', page_text).strip()
+                    
+                    # TOC Heuristic Filter
+                    dot_count = clean_text.count('.')
+                    words = clean_text.split()
+                    numbers = [w for w in words if w.isdigit()]
+                    num_ratio = len(numbers) / len(words) if len(words) > 0 else 0
+                    
+                    is_toc = False
+                    if len(words) > 20 and dot_count > 15 and num_ratio > 0.05:
+                        is_toc = True
+                    elif len(words) > 10 and num_ratio > 0.15 and "contents" in clean_text.lower()[:200]:
+                        is_toc = True
+                        
+                    if not is_toc:
+                        text += clean_text + "\n\n"
+            except Exception:
+                pass
             
-            if text.strip():
-                existing.append({
-                    "source": pdf_file,
-                    "text": text[:50000]  # Limit to 50k chars per PDF
-                })
-                added += 1
-                print(f"✅ Added: {pdf_file} ({len(text)} chars)")
-            else:
-                print(f"⚠️  No text extracted from {pdf_file}")
+        if text.strip():
+            existing.append({
+                "source": pdf_file,
+                "text": text.strip()  # No truncation, load full text for BM25
+            })
+            added += 1
+            print(f"✅ Added: {pdf_file} ({len(text)} chars)")
+        else:
+            print(f"⚠️  No text extracted from {pdf_file}")
                 
     except Exception as e:
         print(f"❌ Error with {pdf_file}: {e}")

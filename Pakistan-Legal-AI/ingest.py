@@ -81,14 +81,46 @@ def ingest():
     
     print(f"\n📚 Total pages extracted: {len(all_docs)}")
     
+    # Filter out TOC and Index pages before chunking
+    filtered_docs = []
+    toc_stripped = 0
+    for doc in all_docs:
+        text = doc.page_content
+        
+        # Heuristic 1: High density of dot-leaders (e.g. "........ 183")
+        # In PyMuPDF, dots often get spaced out or squashed
+        dot_count = text.count('.')
+        
+        # Heuristic 2: High ratio of standalone numbers (page numbers)
+        words = text.split()
+        numbers = [w for w in words if w.isdigit()]
+        num_ratio = len(numbers) / len(words) if len(words) > 0 else 0
+        
+        # We flag a TOC if it has many dots and many numbers
+        is_toc = False
+        if len(words) > 20 and dot_count > 15 and num_ratio > 0.05:
+            is_toc = True
+        # Or if it's explicitly titled as contents and very number heavy
+        elif len(words) > 10 and num_ratio > 0.15 and "contents" in text.lower()[:200]:
+            is_toc = True
+            
+        if is_toc:
+            toc_stripped += 1
+            if toc_stripped <= 3:
+                print(f"🗑️ STRIPPED TOC CHUNK [{doc.metadata['source']}]: {text[:100]}...")
+        else:
+            filtered_docs.append(doc)
+            
+    print(f"\n🧹 TOC/Index Filtering: Removed {toc_stripped} pages. Kept {len(filtered_docs)} pages.")
+
     # Step 3: Chunk the documents
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,       # Larger chunks for legal text = more context per retrieval
-        chunk_overlap=100,    # Overlap prevents losing context at chunk boundaries
-        separators=["\n\n", "\n", ". ", " "]  # Split at paragraphs first, then sentences
+        chunk_size=800,       # Larger chunks for legal text = more context per retrieval
+        chunk_overlap=150,    # Overlap prevents losing context at chunk boundaries
+        separators=["\nArticle ", "\n\n", "\n", ". ", " "]  # Split at articles and paragraphs
     )
-    chunks = splitter.split_documents(all_docs)
-    print(f"✂️  Split into {len(chunks)} chunks (500 chars each, 100 overlap)")
+    chunks = splitter.split_documents(filtered_docs)
+    print(f"✂️  Split into {len(chunks)} chunks (800 chars each, 150 overlap)")
     
     # Step 4: Embed and create FAISS index
     print("🧠 Embedding chunks with all-MiniLM-L6-v2...")

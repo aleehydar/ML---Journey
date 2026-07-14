@@ -4,12 +4,23 @@ import re
 from typing import Dict, List
 
 from datasets import Dataset
-from ragas import evaluate
-from ragas.metrics import AnswerRelevancy, Faithfulness
 
 try:
-    # Newer/alternate ragas variants expose ContextRecall directly.
-    from ragas.metrics import ContextRecall  # type: ignore
+    from ragas import evaluate
+    from ragas.metrics import AnswerRelevancy, Faithfulness
+    try:
+        # Newer/alternate ragas variants expose ContextRecall directly.
+        from ragas.metrics import ContextRecall  # type: ignore
+    except Exception:  # pragma: no cover - compatibility guard
+        ContextRecall = None
+    RAGAS_AVAILABLE = True
+except Exception as e:  # pragma: no cover - compatibility guard
+    print(f"WARNING: ragas import failed, evaluation features disabled: {e}")
+    evaluate = None
+    AnswerRelevancy = None
+    Faithfulness = None
+    ContextRecall = None
+    RAGAS_AVAILABLE = False
 except Exception:  # pragma: no cover - compatibility guard
     ContextRecall = None
 
@@ -18,9 +29,11 @@ logger = logging.getLogger(__name__)
 class RAGASEvaluator:
     def __init__(self):
         """Initialize the RAGAS evaluator with required metrics."""
-        self.metrics = [Faithfulness(), AnswerRelevancy()]
-        if ContextRecall is not None:
-            self.metrics.append(ContextRecall())
+        self.metrics = []
+        if RAGAS_AVAILABLE:
+            self.metrics = [Faithfulness(), AnswerRelevancy()]
+            if ContextRecall is not None:
+                self.metrics.append(ContextRecall())
 
     @staticmethod
     def _normalize_score(value) -> float:
@@ -62,6 +75,13 @@ class RAGASEvaluator:
         Returns:
             Dictionary with evaluation scores
         """
+        if not RAGAS_AVAILABLE:
+            return {
+                "faithfulness": 0.0,
+                "answer_relevancy": 0.0,
+                "context_recall": self._heuristic_context_recall(question, contexts),
+                "ragas_unavailable": True,
+            }
         try:
             # Create a dataset with a single sample.
             # Include both old and newer ragas field names for compatibility.
@@ -137,7 +157,20 @@ class RAGASEvaluator:
         """
         if not evaluations:
             return []
-        
+
+        if not RAGAS_AVAILABLE:
+            return [
+                {
+                    "faithfulness": 0.0,
+                    "answer_relevancy": 0.0,
+                    "context_recall": self._heuristic_context_recall(
+                        eval_item.get("question", ""), eval_item.get("contexts", [])
+                    ),
+                    "ragas_unavailable": True,
+                }
+                for eval_item in evaluations
+            ]
+
         try:
             # Create dataset from batch (old + new ragas keys for compatibility)
             dataset_dict = {

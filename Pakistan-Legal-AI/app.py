@@ -8,6 +8,10 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from typing import List, Dict, Optional
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
+from utils.logging_config import setup_logging
+
+logger = setup_logging("pakistan-legal-ai")
 
 from auth_middleware import AuthClaims, require_permission
 from db.schema import db_schema as eval_db
@@ -25,6 +29,21 @@ app = FastAPI(title="Pakistan Legal Assistant API", description="Production RAG 
 
 # Add Middlewares
 app.add_middleware(ObservabilityMiddleware)
+
+# Read allowed origins from environment variable
+ALLOWED_ORIGINS = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:3000,http://localhost:8000"
+).split(",")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "Authorization"],
+    max_age=600,
+)
 
 # Prometheus metrics endpoint
 metrics_app = make_asgi_app()
@@ -99,7 +118,7 @@ def clean_pdf_text(raw_text):
 global_doc_map = {}
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 if os.path.exists(DATA_DIR):
-    print("📚 Caching pristine PDF pages for Document Explorer API...")
+    logger.info("📚 Caching pristine PDF pages for Document Explorer API...")
     for pdf_file in [f for f in os.listdir(DATA_DIR) if f.lower().endswith(".pdf")]:
         try:
             loader = PyMuPDFLoader(os.path.join(DATA_DIR, pdf_file))
@@ -107,7 +126,7 @@ if os.path.exists(DATA_DIR):
                 key = f"{pdf_file} - Page {page.metadata.get('page', 0) + 1}"
                 global_doc_map[key] = clean_pdf_text(page.page_content)
         except Exception as e:
-            print(f"Error caching {pdf_file}: {e}")
+            logger.error(f"Error caching {pdf_file}: {e}")
 
 @app.get("/documents")
 async def get_documents(claims: AuthClaims = Depends(require_permission("docs:read"))):
@@ -124,6 +143,7 @@ async def chat_endpoint(
     claims: AuthClaims = Depends(require_permission("chat:write")),
 ):
     """Accept user question and history, returns Server-Sent Events stream."""
+    logger.info(f"📊 Processing chat request for user {claims.sub} in org {claims.org_id}")
     generator = generation_service.answer_legal_question(
         req.question,
         history=req.history,

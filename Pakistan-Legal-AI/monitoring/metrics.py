@@ -14,9 +14,40 @@ GROUNDING_PASS_COUNTER = Counter(
     ['status'] # passed or abstained
 )
 
+GROUNDING_CHECKS_TOTAL = Counter(
+    'app_grounding_checks_total', 
+    'Total number of grounding validations performed'
+)
+
+GROUNDING_FAILURES_TOTAL = Counter(
+    'app_grounding_failures_total', 
+    'Total number of grounding validations that failed (proxy for hallucination)'
+)
+
 # Gauge for hallucination trend
-# This would be updated by a background worker polling the eval db
 HALLUCINATION_RATE = Gauge(
     'app_hallucination_rate',
-    'Rolling 7-day hallucination rate percentage'
+    'Rolling hallucination rate percentage (last 100 requests)'
 )
+
+from collections import deque
+import threading
+
+_rolling_results = deque(maxlen=100)
+_rolling_lock = threading.Lock()
+
+def record_grounding_result(passed: bool):
+    """
+    Called after grounding validation to update the rolling hallucination rate
+    and the companion counters. This is a fast, thread-safe memory operation.
+    """
+    GROUNDING_CHECKS_TOTAL.inc()
+    if not passed:
+        GROUNDING_FAILURES_TOTAL.inc()
+        
+    with _rolling_lock:
+        _rolling_results.append(passed)
+        total = len(_rolling_results)
+        if total > 0:
+            failures = sum(1 for p in _rolling_results if not p)
+            HALLUCINATION_RATE.set((failures / total) * 100.0)

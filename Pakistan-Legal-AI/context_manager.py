@@ -20,6 +20,10 @@ retrieved_contexts_var: contextvars.ContextVar[List[str]] = contextvars.ContextV
     "retrieved_contexts", default=[]
 )
 
+hyde_document_var: contextvars.ContextVar[Optional[str]] = contextvars.ContextVar(
+    "hyde_document", default=None
+)
+
 
 def set_request_context(ctx: RequestContext):
     return request_context_var.set(ctx)
@@ -43,3 +47,11 @@ def reset_retrieved_contexts(token):
 
 def get_retrieved_contexts() -> List[str]:
     return retrieved_contexts_var.get()
+
+
+def set_hyde_document(doc: Optional[str]):
+    return hyde_document_var.set(doc)
+
+
+def get_hyde_document() -> Optional[str]:
+    return hyde_document_var.get()
