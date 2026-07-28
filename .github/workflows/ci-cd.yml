@@ -35,13 +35,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements-docker.txt
+        pip install -r Employee-Attrition-Predictor/requirements-docker.txt
     
     - name: Train model
-      run: python model/train.py
+      run: python Employee-Attrition-Predictor/model/train.py
     
     - name: Run tests
-      run: pytest tests/ -v --tb=short
+      run: pytest Employee-Attrition-Predictor/tests/ -v --tb=short
     
     - name: Upload test results
       uses: actions/upload-artifact@v4
@@ -49,8 +49,8 @@ jobs:
       with:
         name: test-results
         path: |
-          model/metrics.json
-          model/*.pkl
+          Employee-Attrition-Predictor/model/metrics.json
+          Employee-Attrition-Predictor/model/*.pkl
 
   # Job 2: Build and push Docker image
   build-and-push:
@@ -86,7 +86,7 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./Employee-Attrition-Predictor
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}

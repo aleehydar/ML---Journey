@@ -4,8 +4,9 @@ uvicorn[standard]==0.32.0
 pydantic==2.9.0
 numpy==1.26.4
 pandas==2.2.0
-scikit-learn==1.5.0
+scikit-learn==1.8.0
 joblib==1.4.0
 python-multipart==0.0.12
+prometheus_client==0.21.1
 pytest
 httpx

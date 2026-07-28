@@ -3,14 +3,19 @@ FastAPI Application for Employee Attrition Prediction
 Provides endpoints for health checks and predictions.
 """
 
-from fastapi import FastAPI, HTTPException
+import time
+
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from pydantic import BaseModel, Field
 import joblib
 import json
 import numpy as np
 import os
 from typing import Literal
+
+from app.monitoring import prediction_counter, error_counter, prediction_latency, metrics_app
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -29,6 +34,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount Prometheus metrics endpoint
+app.mount("/metrics", metrics_app)
 
 # Model paths
 MODEL_DIR = "model"
@@ -149,7 +157,7 @@ async def health_check():
 async def predict(employee: EmployeeData):
     """
     Predict employee attrition risk.
-    
+
     Returns:
         - prediction: 0 (stay) or 1 (leave)
         - probability_stay: Probability of staying
@@ -157,28 +165,30 @@ async def predict(employee: EmployeeData):
         - risk_level: Categorized risk level
     """
     if model is None:
+        error_counter.labels(error_type="model_not_loaded").inc()
         raise HTTPException(status_code=503, detail="Model not loaded")
-    
+
+    start_time = time.perf_counter()
     try:
         # Prepare input data
         input_data = []
-        
+
         for col in feature_columns:
             value = getattr(employee, col)
-            
+
             # Encode categorical variables
             if col in encodings:
                 value = encodings[col].get(value, 0)
-            
+
             input_data.append(value)
-        
+
         # Convert to numpy array
         input_array = np.array([input_data])
-        
+
         # Make prediction
         prediction = model.predict(input_array)[0]
         probabilities = model.predict_proba(input_array)[0]
-        
+
         # Determine risk level
         prob_leave = probabilities[1]
         if prob_leave < 0.3:
@@ -187,15 +197,24 @@ async def predict(employee: EmployeeData):
             risk_level = "Medium"
         else:
             risk_level = "High"
-        
+
+        # --- Prometheus instrumentation ---
+        elapsed = time.perf_counter() - start_time
+        prediction_latency.observe(elapsed)
+        prediction_counter.labels(risk_level=risk_level).inc()
+        # -----------------------------------
+
         return PredictionResponse(
             prediction=int(prediction),
             probability_stay=float(probabilities[0]),
             probability_leave=float(probabilities[1]),
             risk_level=risk_level
         )
-        
+
+    except HTTPException:
+        raise
     except Exception as e:
+        error_counter.labels(error_type="prediction_error").inc()
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
 
 
