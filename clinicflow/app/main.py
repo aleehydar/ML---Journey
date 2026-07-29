@@ -27,8 +27,13 @@ class TriageRequest(BaseModel):
 def get_triage_priority(symptoms: str) -> str:
     symptoms_lower = symptoms.lower()
     
-    immediate_keywords = ["chest pain", "unconscious", "seizure", "not breathing", "severe bleeding", "bp>160", "bp > 160", "bp >160"]
-    urgent_keywords = ["high fever >39", "high fever > 39", "breathing difficulty", "pregnancy + high bp", "altered consciousness"]
+    immediate_keywords = [
+        "chest pain", "chest pressure", "chest tightness", "crushing pain", "crushing chest",
+        "pain in chest", "pressure in chest", "tightness in chest",
+        "unconscious", "seizure", "not breathing", "severe bleeding",
+        "bp>160", "bp > 160", "bp >160", "stroke", "can't breathe", "cannot breathe"
+    ]
+    urgent_keywords = ["high fever >39", "high fever > 39", "breathing difficulty", "trouble breathing", "pregnancy + high bp", "altered consciousness"]
     
     for kw in immediate_keywords:
         if kw in symptoms_lower:
@@ -39,6 +44,19 @@ def get_triage_priority(symptoms: str) -> str:
             return "Urgent"
             
     return "Non-urgent"
+
+
+CRITICAL_ASSESSMENT_TERMS = [
+    "stemi", "st-elevation myocardial infarction", "myocardial infarction", "acute coronary syndrome",
+    "acute mi", "cardiac arrest", "stroke", "cerebrovascular accident", "sepsis", "septic shock",
+    "pulmonary embolism", "aortic dissection", "anaphylaxis", "respiratory failure", "acute abdomen"
+]
+
+def check_assessment_for_critical_findings(soap_note: str) -> bool:
+    """Safety net: if the LLM'''s own generated Assessment names a critical
+    diagnosis, this catches cases the keyword-based input triage missed."""
+    note_lower = soap_note.lower()
+    return any(term in note_lower for term in CRITICAL_ASSESSMENT_TERMS)
 
 def get_risk_flags(symptoms: str) -> list[str]:
     symptoms_lower = symptoms.lower()
@@ -78,6 +96,12 @@ async def triage(req: TriageRequest):
     flags = get_risk_flags(req.symptoms)
     
     soap_note = generate_soap(req.symptoms)
+    
+    # Safety net: cross-check the LLM'''s own generated Assessment for critical
+    # diagnoses the input-side keyword triage may have missed.
+    if priority != "Immediate" and check_assessment_for_critical_findings(soap_note):
+        priority = "Immediate"
+        flags.append("Escalated: critical diagnosis found in generated assessment")
     
     process_time_ms = int((time.time() - start_time) * 1000)
     

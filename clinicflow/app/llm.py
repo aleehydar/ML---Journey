@@ -11,7 +11,14 @@ def load_model():
     pass
 
 def generate_soap(symptoms: str) -> str:
-    prompt = f"### Instruction:\nGenerate a SOAP clinical note\n\n### Input:\n{symptoms}\n\n### Response:\n"
+    prompt = (
+        "### Instruction:\n"
+        "Generate a SOAP clinical note using ONLY the information explicitly provided below. "
+        "Do NOT invent vital signs, medications, past medical history, family history, social history, "
+        "or physical exam findings that are not stated in the input. "
+        "If a section has no information provided, write 'Not documented' for that section instead of fabricating content.\n\n"
+        f"### Input:\n{symptoms}\n\n### Response:\n"
+    )
     headers = {"Authorization": f"Bearer {HF_TOKEN}"}
     response = requests.post(
         API_URL, 
