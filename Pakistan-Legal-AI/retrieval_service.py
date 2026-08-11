@@ -109,7 +109,11 @@ class RetrievalService:
             )
             for item in self.legal_texts
         ]
-        splitter = RecursiveCharacterTextSplitter(chunk_size=350, chunk_overlap=40)
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size=600,
+            chunk_overlap=80,
+            separators=["\nArticle ", "\n\n", "\n", ". ", " "],
+        )
         return splitter.split_documents(docs)
 
     def _load_or_build_vectorstore(self):

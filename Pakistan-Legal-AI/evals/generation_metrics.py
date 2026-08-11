@@ -1,60 +1,65 @@
 import asyncio
+import json
 import logging
+import os
 import re
 from typing import Dict, List
 
-from datasets import Dataset
+from dotenv import load_dotenv
+from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_groq import ChatGroq
 
-try:
-    from ragas import evaluate
-    from ragas.metrics import AnswerRelevancy, Faithfulness
-    try:
-        # Newer/alternate ragas variants expose ContextRecall directly.
-        from ragas.metrics import ContextRecall  # type: ignore
-    except Exception:  # pragma: no cover - compatibility guard
-        ContextRecall = None
-    RAGAS_AVAILABLE = True
-except Exception as e:  # pragma: no cover - compatibility guard
-    print(f"WARNING: ragas import failed, evaluation features disabled: {e}")
-    evaluate = None
-    AnswerRelevancy = None
-    Faithfulness = None
-    ContextRecall = None
-    RAGAS_AVAILABLE = False
-except Exception:  # pragma: no cover - compatibility guard
-    ContextRecall = None
-
+load_dotenv()
 logger = logging.getLogger(__name__)
 
-class RAGASEvaluator:
-    def __init__(self):
-        """Initialize the RAGAS evaluator with required metrics."""
-        self.metrics = []
-        if RAGAS_AVAILABLE:
-            self.metrics = [Faithfulness(), AnswerRelevancy()]
-            if ContextRecall is not None:
-                self.metrics.append(ContextRecall())
+JUDGE_SYSTEM_PROMPT = """
+You are an expert AI evaluator assessing RAG (Retrieval-Augmented Generation) system quality for Pakistani Legal AI.
+You evaluate three metrics on a scale of 0.0 to 1.0 based on strict rubrics:
 
-    @staticmethod
-    def _normalize_score(value) -> float:
+1. FAITHFULNESS (0.0 to 1.0):
+   - 1.0: Every statement and article citation in the answer is strictly derived from and supported by the retrieved context. No invented facts or unsupported claims.
+   - 0.5: Mostly supported, but contains minor ungrounded assumptions or slight extrapolations.
+   - 0.0: Contains explicit factual contradictions, hallucinated article numbers, or unsupported legal claims.
+
+2. ANSWER_RELEVANCE (0.0 to 1.0):
+   - 1.0: The answer directly, completely, and accurately addresses the user's specific legal question.
+   - 0.5: Partially answers the question or includes excessive irrelevant boilerplate while missing key points.
+   - 0.0: Completely misses the question, gives off-topic advice, or returns a generic refusal when context was available.
+
+3. CONTEXT_RECALL (0.0 to 1.0):
+   - 1.0: The retrieved context chunks contain all necessary legal articles, text, or figures to fully answer the question.
+   - 0.5: The context contains partial information (e.g. general legal domain) but misses the specific article or exact rule.
+   - 0.0: The retrieved context is completely irrelevant or empty.
+
+Return ONLY a valid JSON object in this exact schema:
+{
+  "faithfulness": <float 0.0-1.0>,
+  "answer_relevance": <float 0.0-1.0>,
+  "context_recall": <float 0.0-1.0>,
+  "reasoning": "<1-2 sentence explanation of the scores>"
+}
+"""
+
+
+class RAGASEvaluator:
+    """
+    Direct LLM-Judge Evaluator powered by ChatGroq.
+    Bypasses external RAGAS library dependencies entirely to eliminate import errors
+    and provide transparent, rubric-backed RAG quality metrics.
+    """
+
+    def __init__(self):
         try:
-            if value is None:
-                return 0.0
-            score = float(value)
-            if score < 0.0:
-                return 0.0
-            if score > 1.0:
-                return 1.0
-            return score
-        except Exception:
-            return 0.0
+            self.judge_llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0.0)
+            self.available = True
+        except Exception as e:
+            logger.warning(f"Failed to initialize ChatGroq Judge: {e}")
+            self.judge_llm = None
+            self.available = False
 
     @staticmethod
     def _heuristic_context_recall(question: str, contexts: List[str]) -> float:
-        """
-        Fallback approximation when model-backed ContextRecall cannot run.
-        Measures how many key question terms appear in retrieved contexts.
-        """
+        """Fallback approximation when model-backed evaluation is disabled."""
         question_tokens = re.findall(r"[a-zA-Z0-9]+", question.lower())
         keywords = [t for t in question_tokens if len(t) > 3]
         if not keywords or not contexts:
@@ -62,174 +67,71 @@ class RAGASEvaluator:
         context_blob = " ".join(contexts).lower()
         covered = sum(1 for token in set(keywords) if token in context_blob)
         return covered / max(len(set(keywords)), 1)
-    
+
     async def evaluate_single(self, question: str, answer: str, contexts: List[str]) -> Dict[str, float]:
         """
-        Evaluate a single (question, answer, contexts) triple using RAGAS.
-        
-        Args:
-            question: The user's question
-            answer: The generated answer
-            contexts: List of retrieved context strings
-            
-        Returns:
-            Dictionary with evaluation scores
+        Evaluates (question, answer, contexts) triple using single-call LLM judge rubric.
         """
-        if not RAGAS_AVAILABLE:
-            return {
-                "faithfulness": 0.0,
-                "answer_relevancy": 0.0,
-                "context_recall": self._heuristic_context_recall(question, contexts),
-                "ragas_unavailable": True,
-            }
-        try:
-            # Create a dataset with a single sample.
-            # Include both old and newer ragas field names for compatibility.
-            dataset_dict = {
-                "question": [question],
-                "answer": [answer],
-                "contexts": [contexts],
-                "user_input": [question],
-                "response": [answer],
-                "retrieved_contexts": [contexts],
-                # We do not have human gold references in production traffic.
-                # Use model answer as reference placeholder so ContextRecall can run.
-                "reference": [answer],
-            }
-
-            dataset = Dataset.from_dict(dataset_dict)
-
-            # Run evaluation
-            result = evaluate(dataset=dataset, metrics=self.metrics)
-
-            context_recall = 0.0
-            if "context_recall" in result and result["context_recall"]:
-                context_recall = self._normalize_score(result["context_recall"][0])
-            else:
-                context_recall = self._heuristic_context_recall(question, contexts)
-
-            # Extract scores
-            scores = {
-                "faithfulness": self._normalize_score(result["faithfulness"][0] if result["faithfulness"] else 0.0),
-                "answer_relevance": self._normalize_score(result["answer_relevancy"][0] if result["answer_relevancy"] else 0.0),
-                "context_recall": self._normalize_score(context_recall),
-            }
-
-            # Calculate overall score
-            scores["overall_score"] = sum(scores.values()) / len(scores)
-
-            return scores
-
-        except Exception as e:
-            logger.error(f"Error in RAGAS evaluation: {str(e)}")
-            # Keep metrics measurable even if model-backed evaluator is unavailable.
-            fallback_context_recall = self._heuristic_context_recall(question, contexts)
+        if not self.judge_llm or not question or not answer:
+            fallback = self._heuristic_context_recall(question, contexts)
             return {
                 "faithfulness": 0.0,
                 "answer_relevance": 0.0,
-                "context_recall": self._normalize_score(fallback_context_recall),
-                "overall_score": self._normalize_score(fallback_context_recall / 3.0),
+                "context_recall": round(fallback, 3),
+                "overall_score": round(fallback / 3.0, 3),
+                "reasoning": "Judge unavailable or empty input",
             }
-    
-    def evaluate_single_sync(self, question: str, answer: str, contexts: List[str]) -> Dict[str, float]:
-        """
-        Synchronous wrapper for evaluate_single.
-        
-        Args:
-            question: The user's question
-            answer: The generated answer
-            contexts: List of retrieved context strings
-            
-        Returns:
-            Dictionary with evaluation scores
-        """
-        return asyncio.run(self.evaluate_single(question, answer, contexts))
-    
-    async def evaluate_batch(self, evaluations: List[Dict[str, any]]) -> List[Dict[str, float]]:
-        """
-        Evaluate multiple (question, answer, contexts) triples in batch.
-        
-        Args:
-            evaluations: List of dictionaries with 'question', 'answer', and 'contexts' keys
-            
-        Returns:
-            List of evaluation score dictionaries
-        """
-        if not evaluations:
-            return []
 
-        if not RAGAS_AVAILABLE:
-            return [
-                {
-                    "faithfulness": 0.0,
-                    "answer_relevancy": 0.0,
-                    "context_recall": self._heuristic_context_recall(
-                        eval_item.get("question", ""), eval_item.get("contexts", [])
-                    ),
-                    "ragas_unavailable": True,
-                }
-                for eval_item in evaluations
-            ]
+        context_blob = "\n\n".join(contexts) if contexts else "No context retrieved."
+        prompt = f"""Evaluate this RAG interaction:
+
+[USER QUESTION]
+{question}
+
+[RETRIEVED CONTEXT CHUNKS]
+{context_blob[:2500]}
+
+[SYSTEM GENERATED ANSWER]
+{answer}
+"""
+        messages = [
+            SystemMessage(content=JUDGE_SYSTEM_PROMPT),
+            HumanMessage(content=prompt),
+        ]
 
         try:
-            # Create dataset from batch (old + new ragas keys for compatibility)
-            dataset_dict = {
-                "question": [eval_item["question"] for eval_item in evaluations],
-                "answer": [eval_item["answer"] for eval_item in evaluations],
-                "contexts": [eval_item["contexts"] for eval_item in evaluations],
-                "user_input": [eval_item["question"] for eval_item in evaluations],
-                "response": [eval_item["answer"] for eval_item in evaluations],
-                "retrieved_contexts": [eval_item["contexts"] for eval_item in evaluations],
-                "reference": [eval_item["answer"] for eval_item in evaluations],
-            }
+            resp = await asyncio.wait_for(self.judge_llm.ainvoke(messages), timeout=25.0)
+            text = resp.content or ""
+            json_match = re.search(r"\{.*\}", text, re.DOTALL)
+            if json_match:
+                data = json.loads(json_match.group(0))
+                f_val = max(0.0, min(1.0, float(data.get("faithfulness", 0.0))))
+                r_val = max(0.0, min(1.0, float(data.get("answer_relevance", 0.0))))
+                c_val = max(0.0, min(1.0, float(data.get("context_recall", 0.0))))
+                overall = round((f_val + r_val + c_val) / 3.0, 3)
 
-            dataset = Dataset.from_dict(dataset_dict)
-
-            # Run batch evaluation
-            result = evaluate(dataset=dataset, metrics=self.metrics)
-
-            # Extract scores for each sample
-            batch_results = []
-            for i in range(len(evaluations)):
-                raw_context_recall = None
-                if "context_recall" in result and result["context_recall"] and i < len(result["context_recall"]):
-                    raw_context_recall = result["context_recall"][i]
-
-                scores = {
-                    "faithfulness": self._normalize_score(
-                        result["faithfulness"][i] if result["faithfulness"] and i < len(result["faithfulness"]) else 0.0
-                    ),
-                    "answer_relevance": self._normalize_score(
-                        result["answer_relevancy"][i] if result["answer_relevancy"] and i < len(result["answer_relevancy"]) else 0.0
-                    ),
-                    "context_recall": self._normalize_score(
-                        raw_context_recall
-                        if raw_context_recall is not None
-                        else self._heuristic_context_recall(
-                            evaluations[i]["question"], evaluations[i]["contexts"]
-                        )
-                    ),
+                return {
+                    "faithfulness": round(f_val, 3),
+                    "answer_relevance": round(r_val, 3),
+                    "context_recall": round(c_val, 3),
+                    "overall_score": overall,
+                    "reasoning": str(data.get("reasoning", "")),
                 }
-                scores["overall_score"] = sum(scores.values()) / len(scores)
-                batch_results.append(scores)
-
-            return batch_results
-
         except Exception as e:
-            logger.error(f"Error in batch RAGAS evaluation: {str(e)}")
-            # Return resilient fallback scores on failure.
-            fallback = []
-            for item in evaluations:
-                c_recall = self._heuristic_context_recall(item["question"], item["contexts"])
-                fallback.append(
-                    {
-                        "faithfulness": 0.0,
-                        "answer_relevance": 0.0,
-                        "context_recall": self._normalize_score(c_recall),
-                        "overall_score": self._normalize_score(c_recall / 3.0),
-                    }
-                )
-            return fallback
+            logger.warning(f"LLM judge evaluation exception: {e}")
+
+        fallback = self._heuristic_context_recall(question, contexts)
+        return {
+            "faithfulness": 0.0,
+            "answer_relevance": 0.0,
+            "context_recall": round(fallback, 3),
+            "overall_score": round(fallback / 3.0, 3),
+            "reasoning": "Fallback to heuristic due to judge exception",
+        }
+
+    def evaluate_single_sync(self, question: str, answer: str, contexts: List[str]) -> Dict[str, float]:
+        return asyncio.run(self.evaluate_single(question, answer, contexts))
+
 
 # Global evaluator instance
 ragas_evaluator = RAGASEvaluator()

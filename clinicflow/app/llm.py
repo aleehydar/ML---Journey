@@ -2,7 +2,7 @@ import os
 import requests
 
 HF_TOKEN = os.getenv("HF_TOKEN", "")
-API_URL = "https://api-inference.huggingface.co/models/aleehydar/clinicflow-llama-3.2-3b-medical"
+API_URL = "https://router.huggingface.co/hf-inference/models/aleehydar/clinicflow-llama-3.2-3b-medical"
 
 def load_model():
     """
