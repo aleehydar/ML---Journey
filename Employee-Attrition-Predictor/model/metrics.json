@@ -1,9 +1,0 @@
-{
-  "accuracy": 0.8231292517006803,
-  "roc_auc": 0.7920578861228357,
-  "cv_roc_auc_mean": 0.7869034993266892,
-  "cv_roc_auc_std": 0.05830749806784726,
-  "training_samples": 1176,
-  "test_samples": 294,
-  "timestamp": "2026-07-28T23:47:51.115027"
-}
